@@ -1,4 +1,4 @@
-package xyz.sjinglong.unitbot;
+package xyz.sjinglong.unitbot.utils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

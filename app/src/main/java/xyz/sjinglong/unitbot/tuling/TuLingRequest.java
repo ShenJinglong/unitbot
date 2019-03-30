@@ -1,4 +1,4 @@
-package xyz.sjinglong.unitbot;
+package xyz.sjinglong.unitbot.tuling;
 
 
 public class TuLingRequest {

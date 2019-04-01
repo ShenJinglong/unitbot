@@ -1,6 +1,8 @@
 package xyz.sjinglong.unitbot;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,12 +19,15 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.sjinglong.unitbot.tuling.TuLingRobot;
+
 public class ChatFragment extends Fragment {
     private List<Msg> msgList = new ArrayList<>();
     private EditText inputText;
     private Button send;
     private RecyclerView msgRecyclerView;
     private MsgAdapter adapter;
+    private TuLingRobot tuLingRobot;
 
     @Nullable
     @Override
@@ -36,6 +41,14 @@ public class ChatFragment extends Fragment {
         msgRecyclerView.setLayoutManager(layoutManager);
         adapter = new MsgAdapter(msgList);
         msgRecyclerView.setAdapter(adapter);
+        tuLingRobot = new TuLingRobot(msgRecyclerView, adapter, msgList);
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,11 +59,10 @@ public class ChatFragment extends Fragment {
                     adapter.notifyItemInserted(msgList.size() - 1);
                     msgRecyclerView.scrollToPosition(msgList.size() - 1);
                     inputText.setText("");
+                    tuLingRobot.chatWithTuLingRobot(getActivity(), content);
                 }
             }
         });
-
-        return view;
     }
 
     private void initMsgs() {

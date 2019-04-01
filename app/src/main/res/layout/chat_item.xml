@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/item_message_receive"
@@ -11,8 +11,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/item_robot_icon"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:src="@drawable/robot_logo"
@@ -26,7 +26,9 @@
             android:layout_toRightOf="@id/item_robot_icon"
             android:layout_marginLeft="10dp"
             android:textColor="#fff"
-            android:background="@drawable/chat_bg_cloud"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/chat_bg_cloud"
+            android:padding="20dp"/>
 
     </RelativeLayout>
 
@@ -38,8 +40,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/item_user_icon"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:src="@drawable/user_logo"
@@ -53,7 +55,9 @@
             android:layout_toLeftOf="@id/item_user_icon"
             android:layout_marginRight="10dp"
             android:textColor="#fff"
-            android:background="@drawable/chat_bg_user"/>
+            android:gravity="center_vertical"
+            android:background="@drawable/chat_bg_user"
+            android:padding="20dp"/>
 
     </RelativeLayout>
 

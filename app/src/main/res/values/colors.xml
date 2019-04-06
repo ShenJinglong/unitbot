@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="chooseBuffButtonAfter">#555555</color>
+    <color name="chooseBuffButtonBefore">#ffffff</color>
+
+    <color name="userButtonAfter">#555555</color>
+    <color name="userBuffButtonBefore">#ffffff</color>
+
+    <color name="computerTextAfter">#555555</color>
+    <color name="computerTextBefore">#ffffff</color>
 </resources>

@@ -18,7 +18,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="聊天机器人"/>
+            android:hint="聊天机器人"
+            android:textColor="#fff"
+            android:textColorHint="#fff"/>
         
         <Button
             android:id="@+id/chat_fragment_send_button"

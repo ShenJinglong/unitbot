@@ -61,7 +61,6 @@ public class TuLingRobot {
                     try {
                         String jsonResponse = response.body().string();
                         String tuLingResponse = parseTuLingJsonResponse(jsonResponse);
-                        activity.runOnUiThread(() -> Toast.makeText(activity.getApplicationContext(), tuLingResponse, Toast.LENGTH_SHORT).show());
                         Message message = new Message();
                         Bundle data = new Bundle();
                         data.putString("response", tuLingResponse);

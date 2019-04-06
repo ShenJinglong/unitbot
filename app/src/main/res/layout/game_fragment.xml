@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<FrameLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/frame_result">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/game_fragment_button_try_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="200dp"
+                android:padding="50dp"
+                android:text="再玩一次"/>
+
+            <Button
+                android:id="@+id/game_fragment_button_game_over"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="200dp"
+                android:padding="50dp"
+                android:text="结束游戏"/>
+
+        </RelativeLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/frame_game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/game_fragment_text_left"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:background="#fff"/>
+
+            <TextView
+                android:id="@+id/game_fragment_text_middle"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:background="#fff"/>
+
+            <TextView
+                android:id="@+id/game_fragment_text_right"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"
+                android:textColor="#000"
+                android:gravity="center"
+                android:background="#fff"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <Button
+                android:id="@+id/game_fragment_button_buff_center"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:text="n + 4"/>
+            <Button
+                android:id="@+id/game_fragment_button_buff_left"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_toLeftOf="@id/game_fragment_button_buff_center"
+                android:layout_centerVertical="true"
+                android:text="2n + 1"/>
+            <Button
+                android:id="@+id/game_fragment_button_buff_right"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/game_fragment_button_buff_center"
+                android:layout_centerVertical="true"
+                android:text="n^2 / 3"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/game_fragment_button_left"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:id="@+id/game_fragment_button_middle"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/game_fragment_button_right"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_begin">
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_begin_geme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="开始游戏"
+                android:padding="50dp"
+                android:textColor="#000"
+                app:qmui_backgroundColor="#fff"/>
+
+        </RelativeLayout>
+    </FrameLayout>
 
 </FrameLayout>

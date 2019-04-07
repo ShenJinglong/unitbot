@@ -26,6 +26,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import xyz.sjinglong.unitbot.game.GameComputer;
 import xyz.sjinglong.unitbot.game.GameMaster;
 import xyz.sjinglong.unitbot.game.GameUser;
+import xyz.sjinglong.unitbot.hardware.SerialDriver;
 
 public class GameFragment extends Fragment {
     private static final String TAG = "GameFragment";
@@ -53,6 +54,9 @@ public class GameFragment extends Fragment {
 
     private GameComputer gameComputer;
     private GameUser gameUser;
+
+
+    private SerialDriver serialDriver;
 
     @Nullable
     @Override
@@ -200,6 +204,7 @@ public class GameFragment extends Fragment {
             }
         });
 
+        serialDriver = new SerialDriver((MainActivity)getActivity());
     }
 
     public void setLayoutVisibility(int index) {

@@ -28,22 +28,27 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <fragment
-                android:id="@+id/game_fragment"
-                android:name="xyz.sjinglong.unitbot.GameFragment"
+            <FrameLayout
+                android:id="@+id/functional_fragment_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"/>
+                android:layout_weight="2.5">
+            </FrameLayout>
 
         </LinearLayout>
 
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="match_parent"
         android:layout_gravity="start">
-        <include layout="@layout/nav"/>
+
+        <fragment
+            android:id="@+id/nav_fragment"
+            android:name="xyz.sjinglong.unitbot.NavFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </FrameLayout>
 

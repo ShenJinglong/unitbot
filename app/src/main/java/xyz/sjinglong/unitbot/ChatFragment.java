@@ -68,7 +68,7 @@ public class ChatFragment extends Fragment {
     public void addMessage(Msg msg) {
         msgList.add(msg);
         adapter.notifyItemInserted(msgList.size() - 1);
-        if (msgList.size() > 20) {
+        while (msgList.size() > 20) {
             msgList.remove(2);
             adapter.notifyItemRemoved(2);
         }
@@ -77,8 +77,8 @@ public class ChatFragment extends Fragment {
     }
 
     private void initMsgs() {
-        Msg msg1 = new Msg("游戏规则", Msg.TYPE_RECEIVE);
-        Msg msg2 = new Msg("巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉，乌拉乌拉乌拉乌拉乌拉乌拉乌拉乌拉"
+        Msg msg1 = new Msg(getResources().getString(R.string.robot_string_game_rule_title), Msg.TYPE_RECEIVE);
+        Msg msg2 = new Msg(getResources().getString(R.string.robot_string_game_rule_text)
                 , Msg.TYPE_RECEIVE);
         msgList.add(msg1);
         msgList.add(msg2);

@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="聊天机器人"
+            android:hint="@string/robot_string_edit_text_hint_text"
             android:textColor="#fff"
             android:textColorHint="#fff"/>
         
@@ -26,7 +26,7 @@
             android:id="@+id/chat_fragment_send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEND"/>
+            android:text="@string/robot_string_send_button_text"/>
         
     </LinearLayout>
 

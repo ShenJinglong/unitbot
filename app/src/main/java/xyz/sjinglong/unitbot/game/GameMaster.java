@@ -35,11 +35,11 @@ public class GameMaster {
         if (roundCounter == 3) {
             gameFragment.setLayoutVisibility(3);
             if (result > 0)
-                gameFragment.sendMessageToChatFragment("用户赢");
+                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_user_win));
             else if (result == 0)
-                gameFragment.sendMessageToChatFragment("平局");
+                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_draw_text));
             else
-                gameFragment.sendMessageToChatFragment("电脑赢");
+                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_robot_win));
         }
     }
 

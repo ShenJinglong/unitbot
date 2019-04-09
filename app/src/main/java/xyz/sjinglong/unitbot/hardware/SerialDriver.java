@@ -21,7 +21,7 @@ public class SerialDriver {
     private MainActivity mainActivity;
 
     private int devfd = -1;
-    private int baud = 115200;
+    private int baud = 9600;
     private int dataBits = 8;
     private int stopBits = 1;
     private String devName = "/dev/ttyAMA3";
@@ -64,19 +64,27 @@ public class SerialDriver {
             timer.schedule(task, 0, 500);
         } else {
             devfd = -1;
-            sendMessageToChatFragment("串口打开失败");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.robot_string_serial_open_failed_text));
         }
     }
 
-    public void sendMessage(String text) {
+    public void closeSerial() {
+        timer.cancel();
+        if (devfd != -1) {
+            HardwareControler.close(devfd);
+            devfd = -1;
+        }
+    }
+
+    public int sendMessage(String text) {
         if (text.length() > 0) {
             int ret = HardwareControler.write(devfd, text.getBytes());
-            if (ret > 0) {
-                sendMessageToChatFragment("发送成功");
-            } else {
-                sendMessageToChatFragment("发送失败");
-            }
+            if (ret > 0)
+                return ret;
+            else
+                return -1;
         }
+        return 0;
     }
 
     private void sendMessageToChatFragment(String text) {

@@ -3,21 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/nav_fragment_game_button"
+    <EditText
+        android:id="@+id/maintain_fragment_serial_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/robot_string_game_text"/>
+        android:textColor="#fff"/>
 
     <Button
-        android:id="@+id/nav_fragment_maintain_button"
+        android:id="@+id/maintain_fragment_serial_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/robot_string_maintain_text"/>
+        android:text="@string/robot_string_send_button_text"/>
 
-    <Button
-        android:id="@+id/nav_fragment_language_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="中文/English"/>
 </LinearLayout>

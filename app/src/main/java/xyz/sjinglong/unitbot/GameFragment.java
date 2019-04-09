@@ -98,7 +98,7 @@ public class GameFragment extends Fragment {
                 gameComputer = new GameComputer();
                 gameUser = new GameUser();
 
-                GameMaster.beginGame((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.game_fragment));
+                GameMaster.beginGame((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout));
 
                 gameUser.setBuff(0);
                 gameComputer.setBuff();
@@ -179,7 +179,7 @@ public class GameFragment extends Fragment {
                 setLayoutVisibility(2);
                 gameUser = new GameUser();
                 gameComputer = new GameComputer();
-                GameMaster.beginGame((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.game_fragment));
+                GameMaster.beginGame((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout));
 
                 gameUser.setBuff(0);
                 gameComputer.setBuff();
@@ -205,6 +205,12 @@ public class GameFragment extends Fragment {
         });
 
         serialDriver = new SerialDriver((MainActivity)getActivity());
+    }
+
+    @Override
+    public void onDestroy() {
+        serialDriver.closeSerial();
+        super.onDestroy();
     }
 
     public void setLayoutVisibility(int index) {
@@ -309,15 +315,15 @@ public class GameFragment extends Fragment {
 
         if (judgeResult == 1) {
             gameUser.setScore(gameUser.getScore() + 1);
-            sendMessageToChatFragment("用户得分加一");
+            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text));
         } else if (judgeResult == 2) {
-            sendMessageToChatFragment("平局");
+            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text));
         } else if (judgeResult == 3) {
             gameComputer.setScore(gameComputer.getScore() + 1);
-            sendMessageToChatFragment("电脑得分加一");
+            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text));
         }
 
-        GameMaster.handleARound((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.game_fragment),
+        GameMaster.handleARound((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout),
                 GameMaster.roundCounter,
                 gameUser.getScore() - gameComputer.getScore());
     }

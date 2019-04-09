@@ -3,4 +3,24 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="robot_string_game_rule_title">游戏规则</string>
+    <string name="robot_string_game_rule_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉，乌拉乌拉乌拉乌拉乌拉乌拉乌拉乌拉</string>
+    <string name="robot_string_computer_score_add_one_text">机器人得分加一</string>
+    <string name="robot_string_user_score_add_one_text">用户得分加一</string>
+    <string name="robot_string_draw_text">平局</string>
+    <string name="robot_string_begin_game_text">开始游戏</string>
+    <string name="robot_string_try_again_text">再玩一次</string>
+    <string name="robot_string_game_over_text">结束游戏</string>
+    <string name="robot_string_serial_open_failed_text">串口打开失败</string>
+    <string name="robot_string_game_text">游戏</string>
+    <string name="robot_string_maintain_text">维护</string>
+    <string name="robot_string_edit_text_hint_text">聊天机器人</string>
+    <string name="robot_string_send_button_text">发送</string>
+    <string name="robot_string_user_win">用户赢</string>
+    <string name="robot_string_robot_win">机器人赢</string>
+    <string name="robot_string_maintain_sent_successfully">发送成功</string>
+    <string name="robot_string_maintain_failed_to_send">发送失败</string>
+    <string name="robot_string_maintain_edit_text_not_empty">发送的字符串不能为空</string>
+
 </resources>

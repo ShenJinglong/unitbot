@@ -3,21 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/nav_fragment_game_button"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/robot_string_game_text"/>
+        android:layout_height="match_parent"
+        android:background="@color/qmui_config_color_background">
 
-    <Button
-        android:id="@+id/nav_fragment_maintain_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/robot_string_maintain_text"/>
+        <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
+            android:id="@+id/groupListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/nav_fragment_language_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="中文/English"/>
+
+    </ScrollView>
 </LinearLayout>

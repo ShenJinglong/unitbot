@@ -15,9 +15,10 @@
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/robot_logo"
+            android:src="@drawable/robot_logo" />
+            <!--
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#FF000000"/> -->
 
         <TextView
             android:id="@+id/item_robot_message"
@@ -44,9 +45,10 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/user_logo"
+            android:src="@drawable/user_logo" />
+            <!--
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#FF000000"/> -->
 
         <TextView
             android:id="@+id/item_user_message"

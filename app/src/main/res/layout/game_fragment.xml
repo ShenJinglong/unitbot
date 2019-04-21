@@ -93,6 +93,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
+                android:background="#fff"
                 android:text="n + 4"/>
             <Button
                 android:id="@+id/game_fragment_button_buff_left"
@@ -161,9 +162,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/robot_string_begin_game_text"
-                android:padding="50dp"
-                android:textColor="#000"
-                app:qmui_backgroundColor="#fff"/>
+                android:textColor="#00796B"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="20dp"
+                app:qmui_backgroundColor="#fff"
+                app:qmui_borderWidth="0dp"
+                android:textSize="25dp"/>
 
         </RelativeLayout>
     </FrameLayout>

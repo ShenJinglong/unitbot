@@ -22,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
+import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButtonDrawable;
 
 import xyz.sjinglong.unitbot.game.GameComputer;
 import xyz.sjinglong.unitbot.game.GameMaster;
@@ -31,18 +33,18 @@ import xyz.sjinglong.unitbot.hardware.SerialDriver;
 public class GameFragment extends Fragment {
     private static final String TAG = "GameFragment";
 
-    private Button beginGameButton;
+    private QMUIRoundButton beginGameButton;
 
-    private Button leftButton;
-    private Button middleButton;
-    private Button rightButton;
+    private QMUIRoundButton leftButton;
+    private QMUIRoundButton middleButton;
+    private QMUIRoundButton rightButton;
 
-    private Button leftBuffButton;
-    private Button middleBuffButton;
-    private Button rightBuffButton;
+    private QMUIRoundButton leftBuffButton;
+    private QMUIRoundButton middleBuffButton;
+    private QMUIRoundButton rightBuffButton;
 
-    private Button tryAgainButton;
-    private Button gameOverButton;
+    private QMUIRoundButton tryAgainButton;
+    private QMUIRoundButton gameOverButton;
 
     private TextView leftText;
     private TextView middleText;
@@ -103,9 +105,12 @@ public class GameFragment extends Fragment {
                 gameUser.setBuff(0);
                 gameComputer.setBuff();
 
-                leftBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonBefore));
-                middleBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonBefore));
-                rightBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftBuffButton.getBackground();
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleBuffButton.getBackground();
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightBuffButton.getBackground();
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
 
                 leftText.setBackgroundColor(getResources().getColor(R.color.computerTextBefore));
                 middleText.setBackgroundColor(getResources().getColor(R.color.computerTextBefore));
@@ -144,7 +149,8 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!gameUser.buffed) {
-                    leftBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                    QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftBuffButton.getBackground();
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
                 }
                 gameUser.setBuff(1);
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
@@ -155,7 +161,8 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!gameUser.buffed) {
-                    middleBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                    QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleBuffButton.getBackground();
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
                 }
                 gameUser.setBuff(2);
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
@@ -166,7 +173,8 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!gameUser.buffed) {
-                    rightBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                    QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightBuffButton.getBackground();
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
                 }
                 gameUser.setBuff(3);
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
@@ -184,9 +192,12 @@ public class GameFragment extends Fragment {
                 gameUser.setBuff(0);
                 gameComputer.setBuff();
 
-                leftBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonBefore));
-                middleBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonBefore));
-                rightBuffButton.setBackgroundColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftBuffButton.getBackground();
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleBuffButton.getBackground();
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightBuffButton.getBackground();
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
 
                 leftText.setBackgroundColor(getResources().getColor(R.color.computerTextBefore));
                 middleText.setBackgroundColor(getResources().getColor(R.color.computerTextBefore));

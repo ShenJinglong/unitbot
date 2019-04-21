@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
@@ -22,11 +24,18 @@
             android:textColor="#fff"
             android:textColorHint="#fff"/>
         
-        <Button
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/chat_fragment_send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/robot_string_send_button_text"/>
+            android:text="@string/robot_string_send_button_text"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="7dp"
+
+
+            app:qmui_borderWidth="0dp"
+            android:textColor="#00796B"
+            app:qmui_backgroundColor="#fff"/>
         
     </LinearLayout>
 

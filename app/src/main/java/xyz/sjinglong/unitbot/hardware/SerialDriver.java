@@ -21,7 +21,7 @@ public class SerialDriver {
     private MainActivity mainActivity;
 
     private int devfd = -1;
-    private int baud = 9600;
+    static private int baud = 9600;
     private int dataBits = 8;
     private int stopBits = 1;
     private String devName = "/dev/ttyAMA3";
@@ -59,7 +59,7 @@ public class SerialDriver {
 
     public SerialDriver(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-        devfd = HardwareControler.openSerialPort(devName, baud, dataBits, stopBits);
+        devfd = HardwareControler.openSerialPort(devName, SerialDriver.baud, dataBits, stopBits);
         if (devfd >= 0) {
             timer.schedule(task, 0, 500);
         } else {
@@ -87,10 +87,33 @@ public class SerialDriver {
         return 0;
     }
 
+    public int setBuad(int baud) {
+        closeSerial();
+        devfd = HardwareControler.openSerialPort(devName, baud, dataBits, stopBits);
+        if (devfd >= 0) {
+            timer = new Timer();
+            task = new TimerTask() {
+                @Override
+                public void run() {
+                    Message message = new Message();
+                    message.what = 1;
+                    handler.sendMessage(message);
+                }
+            };
+            timer.schedule(task, 0, 500);
+            SerialDriver.baud = baud;
+            sendMessageToChatFragment("波特率设置成功，当前波特率为：" + this.baud);
+            return 1;
+        } else {
+            devfd = -1;
+            sendMessageToChatFragment("重启串口失败");
+            return 0;
+        }
+    }
+
     private void sendMessageToChatFragment(String text) {
         ChatFragment chatFragment = (ChatFragment)mainActivity.getSupportFragmentManager().findFragmentById(R.id.chat_fragment);
         Msg msg = new Msg(text, Msg.TYPE_RECEIVE);
         chatFragment.addMessage(msg);
     }
-
 }

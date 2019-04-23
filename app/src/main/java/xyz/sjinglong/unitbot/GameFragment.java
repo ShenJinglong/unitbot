@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceManager;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,9 +28,13 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButtonDrawable;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import xyz.sjinglong.unitbot.game.GameComputer;
 import xyz.sjinglong.unitbot.game.GameMaster;
 import xyz.sjinglong.unitbot.game.GameUser;
+import xyz.sjinglong.unitbot.hardware.GPIODriver;
 import xyz.sjinglong.unitbot.hardware.SerialDriver;
 
 public class GameFragment extends Fragment {
@@ -57,8 +64,173 @@ public class GameFragment extends Fragment {
     private GameComputer gameComputer;
     private GameUser gameUser;
 
-
     private SerialDriver serialDriver;
+    private GPIODriver gpioDriver;
+
+    private int currentButtonSelection = -1;
+    private int currentUserCardStatus = 7;
+    private Timer timer = new Timer();
+    private TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            Message message = new Message();
+            message.what = 1;
+            handler.sendMessage(message);
+        }
+    };
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    int currentRockerStatus = gpioDriver.getCurrentRockerStatus();
+
+                    sendMessageToChatFragment("****currentRockerStatus"+currentRockerStatus);
+
+                    if (GameMaster.roundCounter == 0) {
+                        if (currentRockerStatus == 100) {
+                            if (currentButtonSelection <= 0) {
+                                currentButtonSelection = 2;
+                            } else {
+                                --currentButtonSelection;
+                            }
+                            setButtonColor(currentButtonSelection);
+                        } else if (currentRockerStatus == 10) {
+                            if (currentButtonSelection == 0) {
+                                leftButton.callOnClick();
+                            } else if (currentButtonSelection == 1) {
+                                middleButton.callOnClick();
+                            } else if (currentButtonSelection == 2) {
+                                rightButton.callOnClick();
+                            }
+                            currentButtonSelection = -1;
+                            setButtonColor(currentButtonSelection);
+                        } else if (currentRockerStatus == 1) {
+                            if (currentButtonSelection == 2 || currentRockerStatus == -1) {
+                                currentButtonSelection = 0;
+                            } else {
+                                ++currentButtonSelection;
+                            }
+                            setButtonColor(currentButtonSelection);
+                        }
+                    } else if (GameMaster.roundCounter == 1) {
+                        if (currentRockerStatus == 100) {
+                            if (currentButtonSelection <= 0) {
+                                currentButtonSelection = 1;
+                            } else {
+                                --currentButtonSelection;
+                            }
+                            if (currentUserCardStatus == 3) {
+                                if (currentButtonSelection == 0) {
+                                    setButtonColor(1);
+                                } else {
+                                    setButtonColor(2);
+                                }
+                            } else if (currentUserCardStatus == 5) {
+                                if (currentButtonSelection == 0) {
+                                    setButtonColor(0);
+                                } else {
+                                    setButtonColor(2);
+                                }
+                            } else if (currentUserCardStatus == 6) {
+                                if (currentButtonSelection == 0) {
+                                    setButtonColor(0);
+                                } else {
+                                    setButtonColor(1);
+                                }
+                            }
+                        } else if (currentRockerStatus == 10) {
+                            if (currentButtonSelection == 0) {
+                                if (currentUserCardStatus == 3) {
+                                    middleButton.callOnClick();
+                                } else if (currentUserCardStatus == 5) {
+                                    leftButton.callOnClick();
+                                } else if (currentUserCardStatus == 6) {
+                                    leftButton.callOnClick();
+                                }
+                            } else if (currentButtonSelection == 1) {
+                                if (currentUserCardStatus == 3) {
+                                    rightButton.callOnClick();
+                                } else if (currentUserCardStatus == 5) {
+                                    rightButton.callOnClick();
+                                } else if (currentUserCardStatus == 6) {
+                                    middleButton.callOnClick();
+                                }
+                            }
+                            currentButtonSelection = -1;
+                            setButtonColor(currentButtonSelection);
+                        } else if (currentRockerStatus == 1) {
+                            if (currentButtonSelection == 1 || currentRockerStatus == -1) {
+                                currentButtonSelection = 0;
+                            } else {
+                                ++currentButtonSelection;
+                            }
+                            if (currentUserCardStatus == 3) {
+                                if (currentButtonSelection == 0) {
+                                    setButtonColor(1);
+                                } else {
+                                    setButtonColor(2);
+                                }
+                            } else if (currentUserCardStatus == 5) {
+                                if (currentButtonSelection == 0) {
+                                    setButtonColor(0);
+                                } else {
+                                    setButtonColor(2);
+                                }
+                            } else if (currentUserCardStatus == 6) {
+                                if (currentButtonSelection == 0) {
+                                    setButtonColor(0);
+                                } else {
+                                    setButtonColor(1);
+                                }
+                            }
+                        }
+                    } else if (GameMaster.roundCounter == 2) {
+                        if (currentRockerStatus == 100) {
+                            if (currentButtonSelection <= 0) {
+                                currentButtonSelection = 0;
+                            } else {
+                                --currentButtonSelection;
+                            }
+                            if (currentUserCardStatus == 4) {
+                                setButtonColor(0);
+                            } else if (currentUserCardStatus == 2) {
+                                setButtonColor(1);
+                            } else if (currentUserCardStatus == 1) {
+                                setButtonColor(2);
+                            }
+                        } else if (currentRockerStatus == 10) {
+                            if (currentUserCardStatus == 4) {
+                                leftButton.callOnClick();
+                            } else if (currentUserCardStatus == 2) {
+                                middleButton.callOnClick();
+                            } else if (currentUserCardStatus == 1) {
+                                rightButton.callOnClick();
+                            }
+                            currentButtonSelection = -1;
+                            setButtonColor(currentButtonSelection);
+                        } else if (currentRockerStatus == 1) {
+                            if (currentButtonSelection == 0 || currentRockerStatus == -1) {
+                                currentButtonSelection = 0;
+                            } else {
+                                ++currentButtonSelection;
+                            }
+                            if (currentUserCardStatus == 4) {
+                                setButtonColor(0);
+                            } else if (currentUserCardStatus == 2) {
+                                setButtonColor(1);
+                            } else if (currentUserCardStatus == 1) {
+                                setButtonColor(2);
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
 
     @Nullable
     @Override
@@ -118,6 +290,8 @@ public class GameFragment extends Fragment {
 
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                 setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
+
+                currentUserCardStatus = 7;
             }
         });
 
@@ -126,6 +300,7 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 gameButtonHandler(1);
                 leftButton.setVisibility(View.GONE);
+                currentUserCardStatus &= 3;
             }
         });
 
@@ -134,6 +309,7 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 gameButtonHandler(2);
                 middleButton.setVisibility(View.GONE);
+                currentUserCardStatus &= 5;
             }
         });
 
@@ -142,6 +318,7 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 gameButtonHandler(3);
                 rightButton.setVisibility(View.GONE);
+                currentUserCardStatus &= 6;
             }
         });
 
@@ -205,6 +382,8 @@ public class GameFragment extends Fragment {
 
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                 setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
+
+                currentUserCardStatus = 7;
             }
         });
 
@@ -216,11 +395,16 @@ public class GameFragment extends Fragment {
         });
 
         serialDriver = new SerialDriver((MainActivity)getActivity());
+        gpioDriver = new GPIODriver((MainActivity)getActivity());
+
+        timer.schedule(task, 400, 500);
     }
 
     @Override
     public void onDestroy() {
         serialDriver.closeSerial();
+        gpioDriver.closeGPIO();
+        timer.cancel();
         super.onDestroy();
     }
 
@@ -262,6 +446,38 @@ public class GameFragment extends Fragment {
         this.leftButton.setText(Integer.toString(leftButton));
         this.middleButton.setText(Integer.toString(middleButton));
         this.rightButton.setText(Integer.toString(rightButton));
+    }
+
+    private void setButtonColor(int index) {
+        if (index == 0) {
+            QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+        } else if (index == 1) {
+            QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+        } else if (index == 2) {
+            QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+        } else if (index == -1) {
+            QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+        }
     }
 
     private void setTextText(int leftText, int middleText, int rightText) {

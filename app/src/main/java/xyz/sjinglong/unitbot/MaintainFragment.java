@@ -1,6 +1,8 @@
 package xyz.sjinglong.unitbot;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.friendlyarm.FriendlyThings.GPIOEnum;
+import com.friendlyarm.FriendlyThings.HardwareControler;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.popup.QMUIListPopup;
 import com.qmuiteam.qmui.widget.popup.QMUIPopup;
@@ -19,7 +23,10 @@ import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import xyz.sjinglong.unitbot.hardware.GPIODriver;
 import xyz.sjinglong.unitbot.hardware.SerialDriver;
 
 public class MaintainFragment extends Fragment {
@@ -102,7 +109,6 @@ public class MaintainFragment extends Fragment {
                             }
                             mListPopup.dismiss();
                         });
-                // mListPopup.setOnDismissListener(()->Toast.makeText(getContext(), "onDismiss", Toast.LENGTH_SHORT).show());
 
                 mListPopup.setAnimStyle(QMUIPopup.ANIM_GROW_FROM_CENTER);
                 mListPopup.setPreferredDirection(0);

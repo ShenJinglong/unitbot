@@ -28,14 +28,17 @@ import java.util.TimerTask;
 
 import xyz.sjinglong.unitbot.hardware.GPIODriver;
 import xyz.sjinglong.unitbot.hardware.SerialDriver;
+import xyz.sjinglong.unitbot.utils.SerialMessageHandler;
 
 public class MaintainFragment extends Fragment {
     private SerialDriver serialDriver;
+    private SerialMessageHandler serialMessageHandler;
 
     private EditText editText;
     private Button button;
 
     private QMUIRoundButton baudButton;
+    private QMUIRoundButton duoji;
 
     @Nullable
     @Override
@@ -44,7 +47,9 @@ public class MaintainFragment extends Fragment {
 
         editText = view.findViewById(R.id.maintain_fragment_serial_edit_text);
         button = view.findViewById(R.id.maintain_fragment_serial_button);
+
         baudButton = view.findViewById(R.id.maintain_fragment_baud);
+        duoji = view.findViewById(R.id.maintain_fragment_duoji);
 
         return view;
     }
@@ -54,6 +59,7 @@ public class MaintainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         serialDriver = new SerialDriver((MainActivity)getActivity());
+        serialMessageHandler = new SerialMessageHandler((MainActivity)getActivity());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +119,18 @@ public class MaintainFragment extends Fragment {
                 mListPopup.setAnimStyle(QMUIPopup.ANIM_GROW_FROM_CENTER);
                 mListPopup.setPreferredDirection(0);
                 mListPopup.show(v);
+            }
+        });
+
+        duoji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String fatalData = serialDriver.getSerialMessage();
+                serialMessageHandler.parseMessage(fatalData);
+                sendMessageToChatFragment("- Red: " + serialMessageHandler.getRedValue());
+                sendMessageToChatFragment("- Green: " + serialMessageHandler.getGreenValue());
+                sendMessageToChatFragment("- Blue: " + serialMessageHandler.getBlueValue());
+                sendMessageToChatFragment("- Distance: " + serialMessageHandler.getDistanceValue());
             }
         });
     }

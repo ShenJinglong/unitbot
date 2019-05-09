@@ -66,6 +66,8 @@ public class GPIODriver {
             sendMessageToChatFragment("设置Rightpin方向失败！");
         }
 
+
+
         timer.schedule(task, 300, 1000);
     }
 

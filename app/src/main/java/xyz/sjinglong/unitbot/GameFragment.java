@@ -85,7 +85,7 @@ public class GameFragment extends Fragment {
                 case 1:
                     int currentRockerStatus = gpioDriver.getCurrentRockerStatus();
 
-                    sendMessageToChatFragment("****currentRockerStatus"+currentRockerStatus);
+                    // sendMessageToChatFragment("****currentRockerStatus"+currentRockerStatus);
 
                     if (GameMaster.roundCounter == 0) {
                         if (currentRockerStatus == 100) {
@@ -291,6 +291,8 @@ public class GameFragment extends Fragment {
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                 setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
 
+                serialDriver.sendMessage("start game");
+
                 currentUserCardStatus = 7;
             }
         });
@@ -300,6 +302,7 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 gameButtonHandler(1);
                 leftButton.setVisibility(View.GONE);
+                serialDriver.sendMessage("left button clicked");
                 currentUserCardStatus &= 3;
             }
         });
@@ -309,6 +312,7 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 gameButtonHandler(2);
                 middleButton.setVisibility(View.GONE);
+                serialDriver.sendMessage("middle button clicked");
                 currentUserCardStatus &= 5;
             }
         });
@@ -318,6 +322,7 @@ public class GameFragment extends Fragment {
             public void onClick(View v) {
                 gameButtonHandler(3);
                 rightButton.setVisibility(View.GONE);
+                serialDriver.sendMessage("right button clicked");
                 currentUserCardStatus &= 6;
             }
         });
@@ -383,6 +388,8 @@ public class GameFragment extends Fragment {
                 setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                 setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
 
+                serialDriver.sendMessage("start game");
+
                 currentUserCardStatus = 7;
             }
         });
@@ -397,7 +404,7 @@ public class GameFragment extends Fragment {
         serialDriver = new SerialDriver((MainActivity)getActivity());
         gpioDriver = new GPIODriver((MainActivity)getActivity());
 
-        timer.schedule(task, 400, 500);
+ //       timer.schedule(task, 400, 500);
     }
 
     @Override

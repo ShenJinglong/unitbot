@@ -18,10 +18,13 @@ import xyz.sjinglong.unitbot.R;
 import static android.app.PendingIntent.getActivity;
 
 public class SerialDriver {
+
+    private String serialMessage = "DE 5463 673 5673 4562526 FE";
+
     private MainActivity mainActivity;
 
     private int devfd = -1;
-    static private int baud = 9600;
+    private static int baud = 9600;
     private int dataBits = 8;
     private int stopBits = 1;
     private String devName = "/dev/ttyAMA3";
@@ -47,6 +50,7 @@ public class SerialDriver {
                         if (retSize > 0) {
                             String str = new String(buf, 0, retSize);
                             sendMessageToChatFragment(str);
+                            serialMessage = str;
                         }
                     }
                     break;
@@ -109,6 +113,10 @@ public class SerialDriver {
             sendMessageToChatFragment("重启串口失败");
             return 0;
         }
+    }
+
+    public String getSerialMessage() {
+        return this.serialMessage;
     }
 
     private void sendMessageToChatFragment(String text) {

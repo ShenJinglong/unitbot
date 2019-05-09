@@ -13,24 +13,24 @@ public class SerialMessageHandler {
 
     private MainActivity mainActivity;
 
-    private String redValue;
-    private String greenValue;
-    private String blueValue;
-    private String distanceValue;
+    private int redValue;
+    private int greenValue;
+    private int blueValue;
+    private int distanceValue;
 
-    public String getRedValue() {
+    public int getRedValue() {
         return redValue;
     }
 
-    public String getGreenValue() {
+    public int getGreenValue() {
         return greenValue;
     }
 
-    public String getBlueValue() {
+    public int getBlueValue() {
         return blueValue;
     }
 
-    public String getDistanceValue() {
+    public int getDistanceValue() {
         return distanceValue;
     }
 
@@ -63,10 +63,10 @@ public class SerialMessageHandler {
             }
         }
 
-        redValue = datas.get(0).toString();
-        greenValue = datas.get(1).toString();
-        blueValue = datas.get(2).toString();
-        distanceValue = datas.get(3).toString();
+        redValue = Integer.parseInt(datas.get(0).toString());
+        greenValue = Integer.parseInt(datas.get(1).toString());
+        blueValue = Integer.parseInt(datas.get(2).toString());
+        distanceValue = Integer.parseInt(datas.get(3).toString());
     }
 
     public SerialMessageHandler(MainActivity mainActivity) {

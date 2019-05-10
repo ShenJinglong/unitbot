@@ -40,17 +40,6 @@ public class GPIODriver {
                     int leftStatus = HardwareControler.getGPIOValue(pinLeft) == GPIOEnum.HIGH ? 0 : 1;
                     int rightStatus = HardwareControler.getGPIOValue(pinRight) == GPIOEnum.HIGH ? 0 : 1;
                     int midStatus = HardwareControler.getGPIOValue(pinMid) == GPIOEnum.HIGH ? 0 : 1;
-                    /*
-                    if (receiveControlFlag == 0) {
-                        currentRockerStatus = leftStatus * 100 + midStatus * 10 + rightStatus;
-                        if (currentRockerStatus != 0) {
-                            receiveControlFlag = 1;
-                        }
-                    } else {
-                        currentRockerStatus = 0;
-                        receiveControlFlag = 0;
-                    }
-                    */
                     currentRockerStatus = leftStatus * 100 + midStatus * 10 + rightStatus;
             }
         }

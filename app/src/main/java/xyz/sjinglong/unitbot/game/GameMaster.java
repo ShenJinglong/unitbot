@@ -10,6 +10,7 @@ import xyz.sjinglong.unitbot.R;
 public class GameMaster {
 
     public static int roundCounter;
+    public static int roundCounterForAnimation;
 
     public GameMaster() {
 
@@ -27,12 +28,15 @@ public class GameMaster {
     public static void beginGame(GameFragment gameFragment) {
 
         roundCounter = 0;
+        roundCounterForAnimation = 0;
 
         gameFragment.setButtonVisibility();
+        gameFragment.setTextVisibility();
+        gameFragment.setButtonColor(-1);
     }
 
-    public static void handleARound(GameFragment gameFragment, int roundCounter, int result) {
-        if (roundCounter == 3) {
+    public static void handleARound(GameFragment gameFragment, int result) {
+        if (roundCounterForAnimation == 3) {
             gameFragment.setLayoutVisibility(3);
             if (result > 0)
                 gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_user_win));

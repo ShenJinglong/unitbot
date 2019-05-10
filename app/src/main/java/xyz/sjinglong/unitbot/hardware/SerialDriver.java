@@ -19,7 +19,7 @@ import static android.app.PendingIntent.getActivity;
 
 public class SerialDriver {
 
-    private String serialMessage = "DE 0 0 0 0 FE";
+    private String serialMessage = "DE 6001 20 65 110 FE";
 
     private MainActivity mainActivity;
 

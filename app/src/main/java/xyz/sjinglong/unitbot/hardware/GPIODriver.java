@@ -20,6 +20,7 @@ public class GPIODriver {
     private final int pinRight = 97;
     private final int pinMid = 77;
     private int currentRockerStatus = 000;
+    private int receiveControlFlag = 0;
 
     private MainActivity mainActivity;
     private Timer timer = new Timer();
@@ -36,9 +37,9 @@ public class GPIODriver {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    int leftStatus = HardwareControler.getGPIOValue(pinLeft) == GPIOEnum.HIGH ? 1 : 0;
-                    int rightStatus = HardwareControler.getGPIOValue(pinRight) == GPIOEnum.HIGH ? 1 : 0;
-                    int midStatus = HardwareControler.getGPIOValue(pinMid) == GPIOEnum.HIGH ? 1 : 0;
+                    int leftStatus = HardwareControler.getGPIOValue(pinLeft) == GPIOEnum.HIGH ? 0 : 1;
+                    int rightStatus = HardwareControler.getGPIOValue(pinRight) == GPIOEnum.HIGH ? 0 : 1;
+                    int midStatus = HardwareControler.getGPIOValue(pinMid) == GPIOEnum.HIGH ? 0 : 1;
                     currentRockerStatus = leftStatus * 100 + midStatus * 10 + rightStatus;
             }
         }
@@ -56,17 +57,21 @@ public class GPIODriver {
             sendMessageToChatFragment("设置Rightpin失败！");
         }
 
-        if (HardwareControler.setGPIODirection(pinLeft, GPIOEnum.IN) != 0) {
+        if (HardwareControler.setGPIODirection(pinLeft, GPIOEnum.OUT) != 0) {
             sendMessageToChatFragment("设置Leftpin方向失败！");
         }
-        if (HardwareControler.setGPIODirection(pinMid, GPIOEnum.IN) != 0) {
+        if (HardwareControler.setGPIODirection(pinMid, GPIOEnum.OUT) != 0) {
             sendMessageToChatFragment("设置Midpin方向失败！");
         }
-        if (HardwareControler.setGPIODirection(pinRight, GPIOEnum.IN) != 0) {
+        if (HardwareControler.setGPIODirection(pinRight, GPIOEnum.OUT) != 0) {
             sendMessageToChatFragment("设置Rightpin方向失败！");
         }
 
-        timer.schedule(task, 300, 1000);
+        HardwareControler.setGPIOValue(pinLeft, GPIOEnum.HIGH);
+        HardwareControler.setGPIOValue(pinMid, GPIOEnum.HIGH);
+        HardwareControler.setGPIOValue(pinRight, GPIOEnum.HIGH);
+
+        timer.schedule(task, 300, 50);
     }
 
     public int getCurrentRockerStatus() {

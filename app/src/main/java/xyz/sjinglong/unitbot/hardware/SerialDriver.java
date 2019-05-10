@@ -112,11 +112,11 @@ public class SerialDriver {
             };
             timer.schedule(task, 0, 200);
             SerialDriver.baud = baud;
-            sendMessageToChatFragment("波特率设置成功，当前波特率为：" + this.baud);
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.serial_driver_set_baud_successfully) + this.baud);
             return 1;
         } else {
             devfd = -1;
-            sendMessageToChatFragment("重启串口失败");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.serial_driver_restart_serial_failed));
             return 0;
         }
     }

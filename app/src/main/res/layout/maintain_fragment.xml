@@ -9,7 +9,7 @@
     <com.qmuiteam.qmui.layout.QMUILinearLayout
         android:id="@+id/maintain_fragment_color_sensor_title"
         android:layout_width="260dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:background="@color/qmui_config_color_white"
         android:gravity="center"
         android:layout_alignParentLeft="true"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="颜色传感器"
+            android:text="@string/maintain_fragment_color_sensor_title"
             android:textSize="25dp"
             android:gravity="center"
             android:background="#00796B"
@@ -35,7 +35,7 @@
     <com.qmuiteam.qmui.layout.QMUILinearLayout
         android:id="@+id/maintain_fragment_color_info_window"
         android:layout_width="260dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:background="@color/qmui_config_color_white"
         android:gravity="center"
         android:layout_below="@id/maintain_fragment_color_sensor_title"
@@ -54,7 +54,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:text="红色分量： "
+            android:text="@string/maintain_fragment_red_value"
             android:textColor="#DFCC3F3F"
             android:textSize="20dp"
             />
@@ -66,7 +66,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:text="绿色分量： "
+            android:text="@string/maintain_fragment_green_value"
             android:textColor="#00796B"
             android:textSize="20dp"
             />
@@ -78,7 +78,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:text="蓝色分量： "
+            android:text="@string/maintain_fragment_blue_value"
             android:textColor="#DF3379C9"
             android:textSize="20dp"
             />
@@ -88,7 +88,7 @@
     <com.qmuiteam.qmui.layout.QMUILinearLayout
         android:id="@+id/maintain_fragment_distance_sensor_title"
         android:layout_width="260dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:background="@color/qmui_config_color_white"
         android:gravity="center"
         android:layout_toRightOf="@id/maintain_fragment_color_sensor_title"
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="距离传感器"
+            android:text="@string/maintain_fragment_distance_sensor_title"
             android:textSize="25dp"
             android:gravity="center"
             android:background="#00796B"
@@ -114,7 +114,7 @@
     <com.qmuiteam.qmui.layout.QMUILinearLayout
         android:id="@+id/maintain_fragment_distance_info_window"
         android:layout_width="260dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:background="@color/qmui_config_color_white"
         android:gravity="center"
         android:layout_below="@id/maintain_fragment_distance_sensor_title"
@@ -134,7 +134,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:text="距离： "
+            android:text="@string/maintain_fragment_distance_value"
             android:textColor="#00796B"
             android:textSize="20dp"
             />
@@ -144,11 +144,11 @@
 
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
         android:id="@+id/maintain_fragment_baud"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:layout_above="@id/maintain_fragment_duoji"
         android:layout_alignParentRight="true"
-        android:text="串口波特率"
+        android:text="@string/maintain_fragment_serial_baud"
         android:textColor="#00796B"
         app:qmui_backgroundColor="#fff"
         app:qmui_borderWidth="0dp"
@@ -163,11 +163,11 @@
 
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
         android:id="@+id/maintain_fragment_duoji"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:layout_above="@id/maintain_fragment_serial_linear_layout"
         android:layout_alignParentRight="true"
-        android:text="调试舵机"
+        android:text="@string/maintain_fragment_adjust_duoji"
         android:textColor="#00796B"
         app:qmui_backgroundColor="#fff"
         app:qmui_borderWidth="0dp"
@@ -199,9 +199,9 @@
 
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/maintain_fragment_serial_button"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text="@string/robot_string_send_button_text"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="@string/maintain_fragment_send"
             android:textColor="#00796B"
             app:qmui_backgroundColor="#fff"
             app:qmui_borderWidth="0dp"

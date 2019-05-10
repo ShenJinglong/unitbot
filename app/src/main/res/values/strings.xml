@@ -23,4 +23,29 @@
     <string name="robot_string_maintain_failed_to_send">发送失败</string>
     <string name="robot_string_maintain_edit_text_not_empty">发送的字符串不能为空</string>
 
+    <string name="maintain_fragment_color_sensor_title">颜色传感器</string>
+    <string name="maintain_fragment_red_value">红色分量： </string>
+    <string name="maintain_fragment_green_value">绿色分量： </string>
+    <string name="maintain_fragment_blue_value">蓝色分量： </string>
+    <string name="maintain_fragment_distance_sensor_title">距离传感器</string>
+    <string name="maintain_fragment_distance_value">距离： </string>
+    <string name="maintain_fragment_serial_baud">串口波特率</string>
+    <string name="maintain_fragment_adjust_duoji">调试舵机</string>
+    <string name="maintain_fragment_send">发送</string>
+
+    <string name="serial_driver_set_baud_successfully">波特率设置成功，当前波特率为： </string>
+    <string name="serial_driver_restart_serial_failed">重启串口失败</string>
+
+    <string name="gpio_driver_export_left_pin_failed">导出左引脚失败</string>
+    <string name="gpio_driver_export_mid_pin_failed">导出中引脚失败</string>
+    <string name="gpio_driver_export_right_pin_failed">导出右引脚失败</string>
+    <string name="gpio_driver_set_left_pin_direction_failed">设置左引脚IO方向失败</string>
+    <string name="gpio_driver_set_mid_pin_direction_failed">设置中引脚IO方向失败</string>
+    <string name="gpio_driver_set_right_pin_direction_failed">设置右引脚IO方向失败</string>
+
+
+
+
+
+
 </resources>

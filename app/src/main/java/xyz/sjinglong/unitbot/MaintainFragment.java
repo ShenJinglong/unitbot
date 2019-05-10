@@ -67,10 +67,10 @@ public class MaintainFragment extends Fragment {
             switch (msg.what) {
                 case 1:
                     serialMessageHandler.parseMessage(serialDriver.getSerialMessage());
-                    redData.setText("红色分量： " + serialMessageHandler.getRedValue());
-                    greenData.setText("绿色分量： " + serialMessageHandler.getGreenValue());
-                    blueData.setText("蓝色分量： " + serialMessageHandler.getBlueValue());
-                    distanceData.setText("距离： " + serialMessageHandler.getDistanceValue());
+                    redData.setText(getResources().getString(R.string.maintain_fragment_red_value) + serialMessageHandler.getRedValue());
+                    greenData.setText(getResources().getString(R.string.maintain_fragment_green_value) + serialMessageHandler.getGreenValue());
+                    blueData.setText(getResources().getString(R.string.maintain_fragment_blue_value) + serialMessageHandler.getBlueValue());
+                    distanceData.setText(getResources().getString(R.string.maintain_fragment_distance_value) + serialMessageHandler.getDistanceValue());
                     break;
                 default:
                     break;

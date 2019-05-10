@@ -48,23 +48,23 @@ public class GPIODriver {
     public GPIODriver(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
         if (HardwareControler.exportGPIOPin(pinLeft) != 0) {
-            sendMessageToChatFragment("设置Leftpin失败！");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.gpio_driver_export_left_pin_failed));
         }
         if (HardwareControler.exportGPIOPin(pinMid) != 0) {
-            sendMessageToChatFragment("设置Midpin失败！");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.gpio_driver_export_mid_pin_failed));
         }
         if (HardwareControler.exportGPIOPin(pinRight) != 0) {
-            sendMessageToChatFragment("设置Rightpin失败！");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.gpio_driver_export_right_pin_failed));
         }
 
         if (HardwareControler.setGPIODirection(pinLeft, GPIOEnum.OUT) != 0) {
-            sendMessageToChatFragment("设置Leftpin方向失败！");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.gpio_driver_set_left_pin_direction_failed));
         }
         if (HardwareControler.setGPIODirection(pinMid, GPIOEnum.OUT) != 0) {
-            sendMessageToChatFragment("设置Midpin方向失败！");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.gpio_driver_set_mid_pin_direction_failed));
         }
         if (HardwareControler.setGPIODirection(pinRight, GPIOEnum.OUT) != 0) {
-            sendMessageToChatFragment("设置Rightpin方向失败！");
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.gpio_driver_set_right_pin_direction_failed));
         }
 
         HardwareControler.setGPIOValue(pinLeft, GPIOEnum.HIGH);

@@ -8,7 +8,7 @@
     <string name="robot_string_game_rule_text">balabalabalabala, wulawulawulawula</string>
     <string name="robot_string_computer_score_add_one_text">Robot score plus one</string>
     <string name="robot_string_user_score_add_one_text">User score plus one</string>
-    <string name="robot_string_draw_text">draw</string>
+    <string name="robot_string_draw_text">Draw</string>
     <string name="robot_string_begin_game_text">Start the game!!!</string>
     <string name="robot_string_try_again_text">Play again</string>
     <string name="robot_string_game_over_text">End game</string>
@@ -16,11 +16,32 @@
     <string name="robot_string_game_text">Game</string>
     <string name="robot_string_maintain_text">Maintain</string>
     <string name="robot_string_edit_text_hint_text">Chat robot</string>
-    <string name="robot_string_send_button_text">send</string>
+    <string name="robot_string_send_button_text">Send</string>
     <string name="robot_string_user_win">User win!!!</string>
     <string name="robot_string_robot_win">Robot win!!!</string>
     <string name="robot_string_maintain_sent_successfully">Sent successfully</string>
     <string name="robot_string_maintain_failed_to_send">Failed to send</string>
     <string name="robot_string_maintain_edit_text_not_empty">The string sent cannot be empty</string>
+
+
+    <string name="maintain_fragment_color_sensor_title">Color Sensor</string>
+    <string name="maintain_fragment_red_value">Red： </string>
+    <string name="maintain_fragment_green_value">Green： </string>
+    <string name="maintain_fragment_blue_value">Blue： </string>
+    <string name="maintain_fragment_distance_sensor_title">Distance Sensor</string>
+    <string name="maintain_fragment_distance_value">Distance： </string>
+    <string name="maintain_fragment_serial_baud">Serial port baud rate</string>
+    <string name="maintain_fragment_adjust_duoji">Adjusting the steering gear</string>
+    <string name="maintain_fragment_send">Send</string>
+
+    <string name="serial_driver_set_baud_successfully">The baud rate is set successfully and the current baud rate is: </string>
+    <string name="serial_driver_restart_serial_failed">Restart the serial port failed</string>
+
+    <string name="gpio_driver_export_left_pin_failed">Export left pin failed</string>
+    <string name="gpio_driver_export_mid_pin_failed">Export intermediate pin failed</string>
+    <string name="gpio_driver_export_right_pin_failed">Export right pin failed</string>
+    <string name="gpio_driver_set_left_pin_direction_failed">Setting the left pin IO direction failed</string>
+    <string name="gpio_driver_set_mid_pin_direction_failed">Setting intermediate pin IO direction failed</string>
+    <string name="gpio_driver_set_right_pin_direction_failed">Setting the right pin IO direction failed</string>
 
 </resources>

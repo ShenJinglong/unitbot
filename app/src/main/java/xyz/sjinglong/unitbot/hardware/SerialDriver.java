@@ -19,12 +19,13 @@ import static android.app.PendingIntent.getActivity;
 
 public class SerialDriver {
 
-    private String serialMessage = "DE 6001 20 65 110 FE";
+    private String serialMessage = "DE 6001 20 65 108 FE";
+    private int sendCounter = 0;
 
     private MainActivity mainActivity;
 
     private int devfd = -1;
-    private static int baud = 9600;
+    private static int baud = 115200;
     private int dataBits = 8;
     private int stopBits = 1;
     private String devName = "/dev/ttyAMA3";
@@ -49,7 +50,12 @@ public class SerialDriver {
                         int retSize = HardwareControler.read(devfd, buf, BUFSIZE);
                         if (retSize > 0) {
                             String str = new String(buf, 0, retSize);
-                            sendMessageToChatFragment(str);
+                            if (sendCounter == 2) {
+                                sendMessageToChatFragment(str);
+                                sendCounter = 0;
+                            } else {
+                                ++sendCounter;
+                            }
                             serialMessage = str;
                         }
                     }
@@ -65,7 +71,7 @@ public class SerialDriver {
         this.mainActivity = mainActivity;
         devfd = HardwareControler.openSerialPort(devName, SerialDriver.baud, dataBits, stopBits);
         if (devfd >= 0) {
-            timer.schedule(task, 0, 500);
+            timer.schedule(task, 0, 200);
         } else {
             devfd = -1;
             sendMessageToChatFragment(mainActivity.getResources().getString(R.string.robot_string_serial_open_failed_text));
@@ -104,7 +110,7 @@ public class SerialDriver {
                     handler.sendMessage(message);
                 }
             };
-            timer.schedule(task, 0, 500);
+            timer.schedule(task, 0, 200);
             SerialDriver.baud = baud;
             sendMessageToChatFragment("波特率设置成功，当前波特率为：" + this.baud);
             return 1;

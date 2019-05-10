@@ -246,7 +246,9 @@ public class GameFragment extends Fragment {
                     }
                 });
                 leftButton.startAnimation(translateAnimation);
-                setButtonColor(0);
+
+                QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
+                roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
             }
         });
 
@@ -276,7 +278,10 @@ public class GameFragment extends Fragment {
                     }
                 });
                 middleButton.startAnimation(translateAnimation);
-                setButtonColor(1);
+
+
+                QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
+                roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
             }
         });
 
@@ -306,7 +311,9 @@ public class GameFragment extends Fragment {
                     }
                 });
                 rightButton.startAnimation(translateAnimation);
-                setButtonColor(2);
+
+                QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
+                roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
             }
         });
 

@@ -12,10 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.friendlyarm.FriendlyThings.GPIOEnum;
 import com.friendlyarm.FriendlyThings.HardwareControler;
+import com.qmuiteam.qmui.layout.QMUILinearLayout;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.popup.QMUIListPopup;
 import com.qmuiteam.qmui.widget.popup.QMUIPopup;
@@ -40,6 +42,43 @@ public class MaintainFragment extends Fragment {
     private QMUIRoundButton baudButton;
     private QMUIRoundButton duoji;
 
+    private QMUILinearLayout colorWindowLayout;
+    private QMUILinearLayout colorSensorTitle;
+    private TextView redData;
+    private TextView greenData;
+    private TextView blueData;
+
+    private QMUILinearLayout distanceWindowLayout;
+    private QMUILinearLayout distanceSensorTitle;
+    private TextView distanceData;
+
+    private Timer timer = new Timer();
+    private TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            Message message = new Message();
+            message.what = 1;
+            handler.sendMessage(message);
+        }
+    };
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    serialMessageHandler.parseMessage(serialDriver.getSerialMessage());
+                    redData.setText("红色分量： " + serialMessageHandler.getRedValue());
+                    greenData.setText("绿色分量： " + serialMessageHandler.getGreenValue());
+                    blueData.setText("蓝色分量： " + serialMessageHandler.getBlueValue());
+                    distanceData.setText("距离： " + serialMessageHandler.getDistanceValue());
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +89,27 @@ public class MaintainFragment extends Fragment {
 
         baudButton = view.findViewById(R.id.maintain_fragment_baud);
         duoji = view.findViewById(R.id.maintain_fragment_duoji);
+
+        colorWindowLayout = view.findViewById(R.id.maintain_fragment_color_info_window);
+        colorSensorTitle = view.findViewById(R.id.maintain_fragment_color_sensor_title);
+        redData = view.findViewById(R.id.maintain_fragment_color_red);
+        greenData = view.findViewById(R.id.maintain_fragment_color_green);
+        blueData = view.findViewById(R.id.maintain_fragment_color_blue);
+
+        colorWindowLayout.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 15),
+                QMUIDisplayHelper.dp2px(getContext(),14), 0.25f);
+        colorSensorTitle.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 15),
+                QMUIDisplayHelper.dp2px(getContext(),14), 0.25f);
+
+
+        distanceWindowLayout = view.findViewById(R.id.maintain_fragment_distance_info_window);
+        distanceSensorTitle = view.findViewById(R.id.maintain_fragment_distance_sensor_title);
+        distanceData = view.findViewById(R.id.maintain_fragment_distance_value);
+
+        distanceWindowLayout.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 15),
+                QMUIDisplayHelper.dp2px(getContext(),14), 0.25f);
+        distanceSensorTitle.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 15),
+                QMUIDisplayHelper.dp2px(getContext(),14), 0.25f);
 
         return view;
     }
@@ -133,6 +193,8 @@ public class MaintainFragment extends Fragment {
                 sendMessageToChatFragment("- Distance: " + serialMessageHandler.getDistanceValue());
             }
         });
+
+        timer.schedule(task,0, 200);
     }
 
     public void sendMessageToChatFragment(String text) {
@@ -140,5 +202,12 @@ public class MaintainFragment extends Fragment {
         ChatFragment chatFragment = (ChatFragment)mainActivity.getSupportFragmentManager().findFragmentById(R.id.chat_fragment);
         Msg msg = new Msg(text, Msg.TYPE_RECEIVE);
         chatFragment.addMessage(msg);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        timer.cancel();
+        serialDriver.closeSerial();
     }
 }

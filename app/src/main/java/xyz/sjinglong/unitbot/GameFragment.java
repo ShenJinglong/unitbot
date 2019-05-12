@@ -42,6 +42,7 @@ import xyz.sjinglong.unitbot.game.GameUser;
 import xyz.sjinglong.unitbot.hardware.GPIODriver;
 import xyz.sjinglong.unitbot.hardware.SerialDriver;
 import xyz.sjinglong.unitbot.utils.SerialMessageHandler;
+import xyz.sjinglong.unitbot.utils.TTS;
 
 public class GameFragment extends Fragment {
     private static final String TAG = "GameFragment";
@@ -61,6 +62,8 @@ public class GameFragment extends Fragment {
 
     private QMUIRoundButton tryAgainButton;
     private QMUIRoundButton gameOverButton;
+
+    public TextView showResult;
 
     private QMUIRoundButton leftText;
     private QMUIRoundButton middleText;
@@ -127,6 +130,7 @@ public class GameFragment extends Fragment {
         middleBuffButton = view.findViewById(R.id.game_fragment_button_buff_center);
         rightBuffButton = view.findViewById(R.id.game_fragment_button_buff_right);
 
+        showResult = view.findViewById(R.id.game_fragment_show_result);
         // mTestLayout = view.findViewById(R.id.layout_for_test);
 
         // mTestLayout.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 15), QMUIDisplayHelper.dp2px(getContext(), 100), 1.0f);
@@ -482,11 +486,11 @@ public class GameFragment extends Fragment {
         rightText.setVisibility(View.VISIBLE);
     }
 
-    public void sendMessageToChatFragment(String text) {
+    public void sendMessageToChatFragment(String text, int messageType) {
         MainActivity mainActivity = (MainActivity)getActivity();
         ChatFragment chatFragment = (ChatFragment)mainActivity.getSupportFragmentManager().findFragmentById(R.id.chat_fragment);
         Msg msg = new Msg(text, Msg.TYPE_RECEIVE);
-        chatFragment.addMessage(msg);
+        chatFragment.addMessage(msg, messageType);
     }
 
     private void setButtonText(int leftButton, int middleButton, int rightButton) {
@@ -572,12 +576,12 @@ public class GameFragment extends Fragment {
 
                         if (judgeResult == 1) {
                             gameUser.setScore(gameUser.getScore() + 1);
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text), TTS.TYPE_ADD);
                         } else if (judgeResult == 2) {
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text), TTS.TYPE_ADD);
                         } else if (judgeResult == 3) {
                             gameComputer.setScore(gameComputer.getScore() + 1);
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text), TTS.TYPE_ADD);
                         }
 
                         GameMaster.handleARound((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout),
@@ -608,12 +612,12 @@ public class GameFragment extends Fragment {
 
                         if (judgeResult == 1) {
                             gameUser.setScore(gameUser.getScore() + 1);
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text), TTS.TYPE_ADD);
                         } else if (judgeResult == 2) {
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text), TTS.TYPE_ADD);
                         } else if (judgeResult == 3) {
                             gameComputer.setScore(gameComputer.getScore() + 1);
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text), TTS.TYPE_ADD);
                         }
 
                         GameMaster.handleARound((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout),
@@ -644,12 +648,12 @@ public class GameFragment extends Fragment {
 
                         if (judgeResult == 1) {
                             gameUser.setScore(gameUser.getScore() + 1);
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_user_score_add_one_text), TTS.TYPE_ADD);
                         } else if (judgeResult == 2) {
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_draw_text), TTS.TYPE_ADD);
                         } else if (judgeResult == 3) {
                             gameComputer.setScore(gameComputer.getScore() + 1);
-                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text));
+                            sendMessageToChatFragment(getResources().getString(R.string.robot_string_computer_score_add_one_text), TTS.TYPE_ADD);
                         }
 
                         GameMaster.handleARound((GameFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout),

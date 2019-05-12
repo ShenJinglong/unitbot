@@ -6,6 +6,7 @@ import java.util.Random;
 
 import xyz.sjinglong.unitbot.GameFragment;
 import xyz.sjinglong.unitbot.R;
+import xyz.sjinglong.unitbot.utils.TTS;
 
 public class GameMaster {
 
@@ -38,12 +39,16 @@ public class GameMaster {
     public static void handleARound(GameFragment gameFragment, int result) {
         if (roundCounterForAnimation == 3) {
             gameFragment.setLayoutVisibility(3);
-            if (result > 0)
-                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_user_win));
-            else if (result == 0)
-                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_draw_text));
-            else
-                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_robot_win));
+            if (result > 0) {
+                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_user_win), TTS.TYPE_ADD);
+                gameFragment.showResult.setText(gameFragment.getResources().getString(R.string.game_fragment_show_result_you_win));
+            } else if (result == 0) {
+                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_draw_text), TTS.TYPE_ADD);
+                gameFragment.showResult.setText(gameFragment.getResources().getString(R.string.game_fragment_show_result_draw));
+            } else {
+                gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_robot_win), TTS.TYPE_ADD);
+                gameFragment.showResult.setText(gameFragment.getResources().getString(R.string.game_fragment_show_result_you_lose));
+            }
         }
     }
 

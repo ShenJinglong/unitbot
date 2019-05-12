@@ -14,6 +14,7 @@ import xyz.sjinglong.unitbot.ChatFragment;
 import xyz.sjinglong.unitbot.MainActivity;
 import xyz.sjinglong.unitbot.Msg;
 import xyz.sjinglong.unitbot.R;
+import xyz.sjinglong.unitbot.utils.TTS;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -51,7 +52,7 @@ public class SerialDriver {
                         if (retSize > 0) {
                             String str = new String(buf, 0, retSize);
                             if (sendCounter == 2) {
-                                sendMessageToChatFragment(str);
+                                sendMessageToChatFragment(str, TTS.TYPE_SLIENT);
                                 sendCounter = 0;
                             } else {
                                 ++sendCounter;
@@ -74,7 +75,7 @@ public class SerialDriver {
             timer.schedule(task, 0, 200);
         } else {
             devfd = -1;
-            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.robot_string_serial_open_failed_text));
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.robot_string_serial_open_failed_text), TTS.TYPE_ADD);
         }
     }
 
@@ -112,11 +113,11 @@ public class SerialDriver {
             };
             timer.schedule(task, 0, 200);
             SerialDriver.baud = baud;
-            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.serial_driver_set_baud_successfully) + this.baud);
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.serial_driver_set_baud_successfully) + this.baud, TTS.TYPE_ADD);
             return 1;
         } else {
             devfd = -1;
-            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.serial_driver_restart_serial_failed));
+            sendMessageToChatFragment(mainActivity.getResources().getString(R.string.serial_driver_restart_serial_failed), TTS.TYPE_ADD);
             return 0;
         }
     }
@@ -125,9 +126,9 @@ public class SerialDriver {
         return this.serialMessage;
     }
 
-    private void sendMessageToChatFragment(String text) {
+    private void sendMessageToChatFragment(String text, int messageType) {
         ChatFragment chatFragment = (ChatFragment)mainActivity.getSupportFragmentManager().findFragmentById(R.id.chat_fragment);
         Msg msg = new Msg(text, Msg.TYPE_RECEIVE);
-        chatFragment.addMessage(msg);
+        chatFragment.addMessage(msg, messageType);
     }
 }

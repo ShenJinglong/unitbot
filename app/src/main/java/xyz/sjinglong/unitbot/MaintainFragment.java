@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +32,14 @@ import java.util.TimerTask;
 import xyz.sjinglong.unitbot.hardware.GPIODriver;
 import xyz.sjinglong.unitbot.hardware.SerialDriver;
 import xyz.sjinglong.unitbot.utils.SerialMessageHandler;
+import xyz.sjinglong.unitbot.utils.TTS;
 
 public class MaintainFragment extends Fragment {
     private SerialDriver serialDriver;
     private SerialMessageHandler serialMessageHandler;
+
+    private SeekBar ttsSpeachRate;
+    private SeekBar ttsPitch;
 
     private EditText editText;
     private Button button;
@@ -84,6 +89,9 @@ public class MaintainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.maintain_fragment, container, false);
 
+        ttsSpeachRate = view.findViewById(R.id.TTS_speach_rate);
+        ttsPitch = view.findViewById(R.id.TTS_pitch);
+
         editText = view.findViewById(R.id.maintain_fragment_serial_edit_text);
         button = view.findViewById(R.id.maintain_fragment_serial_button);
 
@@ -127,13 +135,13 @@ public class MaintainFragment extends Fragment {
                 String editTextString = editText.getText().toString();
                 int send_result = serialDriver.sendMessage(editTextString);
                 if (send_result > 0) {
-                    sendMessageToChatFragment(editTextString);
-                    sendMessageToChatFragment(getResources().getString(R.string.robot_string_maintain_sent_successfully));
+                    sendMessageToChatFragment(editTextString, TTS.TYPE_FLUSH);
+                    sendMessageToChatFragment(getResources().getString(R.string.robot_string_maintain_sent_successfully), TTS.TYPE_ADD);
                 } else if (send_result == 0) {
-                    sendMessageToChatFragment(getResources().getString(R.string.robot_string_maintain_edit_text_not_empty));
+                    sendMessageToChatFragment(getResources().getString(R.string.robot_string_maintain_edit_text_not_empty), TTS.TYPE_FLUSH);
                 } else {
-                    sendMessageToChatFragment(editTextString);
-                    sendMessageToChatFragment(getResources().getString(R.string.robot_string_maintain_failed_to_send));
+                    sendMessageToChatFragment(editTextString, TTS.TYPE_FLUSH);
+                    sendMessageToChatFragment(getResources().getString(R.string.robot_string_maintain_failed_to_send), TTS.TYPE_ADD);
                 }
             }
         });
@@ -185,23 +193,61 @@ public class MaintainFragment extends Fragment {
         duoji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fatalData = serialDriver.getSerialMessage();
-                serialMessageHandler.parseMessage(fatalData);
-                sendMessageToChatFragment("- Red: " + serialMessageHandler.getRedValue());
-                sendMessageToChatFragment("- Green: " + serialMessageHandler.getGreenValue());
-                sendMessageToChatFragment("- Blue: " + serialMessageHandler.getBlueValue());
-                sendMessageToChatFragment("- Distance: " + serialMessageHandler.getDistanceValue());
+            }
+        });
+
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "hahaha", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ttsSpeachRate.setProgress((int)(TTS.getSpeachRate() * 10));
+        ttsPitch.setProgress((int)(TTS.getPitch() * 10));
+
+        ttsSpeachRate.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                TTS.setSpeechRate(progress * 1.0f / 10.0f);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        ttsPitch.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                TTS.setPitch(progress * 1.0f / 10.0f);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
         timer.schedule(task,0, 200);
     }
 
-    public void sendMessageToChatFragment(String text) {
+    public void sendMessageToChatFragment(String text, int messageType) {
         MainActivity mainActivity = (MainActivity)getActivity();
         ChatFragment chatFragment = (ChatFragment)mainActivity.getSupportFragmentManager().findFragmentById(R.id.chat_fragment);
         Msg msg = new Msg(text, Msg.TYPE_RECEIVE);
-        chatFragment.addMessage(msg);
+        chatFragment.addMessage(msg, messageType);
     }
 
     @Override

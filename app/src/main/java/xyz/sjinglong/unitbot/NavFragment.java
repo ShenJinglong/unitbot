@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
@@ -23,10 +24,11 @@ import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 
 import java.util.Locale;
 
+import xyz.sjinglong.unitbot.utils.TTS;
+
 public class NavFragment extends Fragment {
 
     private QMUIGroupListView mGroupListView;
-//    private DrawerLayout drawerLayout;
 
     @Nullable
     @Override
@@ -34,8 +36,6 @@ public class NavFragment extends Fragment {
         View view = inflater.inflate(R.layout.nav, container, false);
 
         mGroupListView = view.findViewById(R.id.groupListView);
-//        drawerLayout = view.findViewById(R.id.drawer_layout);
-
 
         QMUICommonListItemView itemGame = mGroupListView.createItemView(getResources().getText(R.string.robot_string_game_text));
         itemGame.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
@@ -58,15 +58,23 @@ public class NavFragment extends Fragment {
                     if (tag == 1) {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        // transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        transaction.setCustomAnimations(R.anim.fragment_slide_right_enter, R.anim.fragment_slide_right_exit);
                         transaction.replace(R.id.functional_fragment_layout, new GameFragment());
+ //                       transaction.addToBackStack(null);
                         transaction.commit();
-//                        drawerLayout.closeDrawers();
+                        MainActivity mainActivity = (MainActivity)getActivity();
+                        mainActivity.closeDrawer();
                     } else if (tag == 2) {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        transaction.setCustomAnimations(R.anim.fragment_slide_right_enter, R.anim.fragment_slide_right_exit);
+                        // transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                         transaction.replace(R.id.functional_fragment_layout, new MaintainFragment());
+ //                       transaction.addToBackStack(null);
                         transaction.commit();
-//                        drawerLayout.closeDrawers();
+                        MainActivity mainActivity = (MainActivity)getActivity();
+                        mainActivity.closeDrawer();
                     } else if (tag == 3) {
                         Resources resources = getActivity().getResources();
                         DisplayMetrics dm = resources.getDisplayMetrics();
@@ -88,8 +96,8 @@ public class NavFragment extends Fragment {
         };
 
         QMUIGroupListView.newSection(getContext())
-                .setTitle("TTTTT")
-                .setDescription("DDDDD")
+                .setTitle("")
+                .setDescription("")
                 .addItemView(itemGame, onClickListener)
                 .addItemView(itemMaintain, onClickListener)
                 .addItemView(itemLanguage, onClickListener)

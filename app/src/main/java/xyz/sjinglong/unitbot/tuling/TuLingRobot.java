@@ -23,6 +23,7 @@ import xyz.sjinglong.unitbot.Msg;
 import xyz.sjinglong.unitbot.MsgAdapter;
 import xyz.sjinglong.unitbot.R;
 import xyz.sjinglong.unitbot.utils.OkHttpUtils;
+import xyz.sjinglong.unitbot.utils.TTS;
 
 public class TuLingRobot {
     private static final String tuLingUrl = "https://openapi.tuling123.com/openapi/api/v2";
@@ -43,6 +44,8 @@ public class TuLingRobot {
             mmlist.add(msg1);
             adapter.notifyItemInserted(mmlist.size() - 1);
             recyclerView.scrollToPosition(mmlist.size() - 1);
+
+            TTS.speakFLUSH(handlerData);
         }
     };
 

@@ -15,11 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import xyz.sjinglong.unitbot.tuling.TuLingRobot;
+import xyz.sjinglong.unitbot.utils.TTS;
 
 public class ChatFragment extends Fragment {
     private List<Msg> msgList = new ArrayList<>();
@@ -65,15 +67,19 @@ public class ChatFragment extends Fragment {
         });
     }
 
-    public void addMessage(Msg msg) {
+    public void addMessage(Msg msg, int speakType) {
         msgList.add(msg);
         adapter.notifyItemInserted(msgList.size() - 1);
         while (msgList.size() > 20) {
             msgList.remove(2);
             adapter.notifyItemRemoved(2);
         }
-
         msgRecyclerView.scrollToPosition(msgList.size() - 1);
+
+        if (speakType == TTS.TYPE_ADD)
+            TTS.speakADD(msg.getContent());
+        else if (speakType == TTS.TYPE_FLUSH)
+            TTS.speakFLUSH(msg.getContent());
     }
 
     private void initMsgs() {

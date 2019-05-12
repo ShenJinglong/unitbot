@@ -13,21 +13,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/game_fragment_show_result"
+                android:layout_width="800dp"
+                android:layout_height="300dp"
+                android:textSize="100dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:textColor="#00796B"
+                />
+
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                 android:id="@+id/game_fragment_button_try_again"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_below="@id/game_fragment_show_result"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="150dp"
+                android:layout_marginTop="30dp"
                 android:paddingHorizontal="50dp"
                 android:paddingVertical="20dp"
                 android:text="@string/robot_string_try_again_text"
 
                 android:textSize="25dp"
-                android:textColor="#00796B"
+                android:textColor="#fff"
                 app:qmui_borderWidth="0dp"
-                app:qmui_backgroundColor="#fff"
+                app:qmui_backgroundColor="#00796B"
 
                 android:elevation="8dp"
                 />
@@ -36,17 +48,18 @@
                 android:id="@+id/game_fragment_button_game_over"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_below="@id/game_fragment_show_result"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="150dp"
+                android:layout_marginTop="30dp"
                 android:paddingHorizontal="50dp"
                 android:paddingVertical="20dp"
                 android:text="@string/robot_string_game_over_text"
 
                 android:textSize="25dp"
-                android:textColor="#00796B"
+                android:textColor="#fff"
                 app:qmui_borderWidth="0dp"
-                app:qmui_backgroundColor="#fff"
+                app:qmui_backgroundColor="#00796B"
 
                 android:elevation="8dp"/>
 
@@ -283,19 +296,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <TextView
+                android:id="@+id/game_fragment_game_title"
+                android:layout_width="500dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:text="UnitTop"
+                android:gravity="center"
+                android:textSize="120dp"
+                android:textColor="#00796B"/>
+
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                 android:id="@+id/game_fragment_button_begin_geme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_below="@id/game_fragment_game_title"
+                android:layout_centerHorizontal="true"
                 android:text="@string/robot_string_begin_game_text"
-                android:textColor="#00796B"
+                android:textColor="#fff"
                 android:paddingHorizontal="50dp"
                 android:paddingVertical="20dp"
-                app:qmui_backgroundColor="#fff"
+                android:layout_marginTop="30dp"
+                app:qmui_backgroundColor="#00796B"
                 app:qmui_borderWidth="0dp"
                 android:textSize="25dp"
-                android:elevation="10dp"
+                android:elevation="6dp"
                 />
 
         </RelativeLayout>

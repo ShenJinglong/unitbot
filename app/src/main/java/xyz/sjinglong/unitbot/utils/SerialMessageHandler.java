@@ -76,9 +76,9 @@ public class SerialMessageHandler {
         this.mainActivity = mainActivity;
     }
 
-    private void sendMessageToChatFragment(String text) {
+    private void sendMessageToChatFragment(String text, int messageType) {
         ChatFragment chatFragment = (ChatFragment)mainActivity.getSupportFragmentManager().findFragmentById(R.id.chat_fragment);
         Msg msg = new Msg(text, Msg.TYPE_RECEIVE);
-        chatFragment.addMessage(msg);
+        chatFragment.addMessage(msg, messageType);
     }
 }

@@ -25,11 +25,13 @@
 
 
     <string name="maintain_fragment_color_sensor_title">Color Sensor</string>
-    <string name="maintain_fragment_red_value">Red： </string>
-    <string name="maintain_fragment_green_value">Green： </string>
-    <string name="maintain_fragment_blue_value">Blue： </string>
-    <string name="maintain_fragment_distance_sensor_title">Distance Sensor</string>
-    <string name="maintain_fragment_distance_value">Distance： </string>
+    <string name="maintain_fragment_red_value">Red: </string>
+    <string name="maintain_fragment_green_value">Green: </string>
+    <string name="maintain_fragment_blue_value">Blue: </string>
+    <string name="maintain_fragment_distance_sensor_title">Distance Sensor/Voice</string>
+    <string name="maintain_fragment_distance_value">Distance: </string>
+    <string name="maintain_fragment_speech_rate">Rate: </string>
+    <string name="maintain_fragment_tone">Tone: </string>
     <string name="maintain_fragment_serial_baud">Serial port baud rate</string>
     <string name="maintain_fragment_adjust_duoji">Adjusting the steering gear</string>
     <string name="maintain_fragment_send">Send</string>
@@ -43,5 +45,9 @@
     <string name="gpio_driver_set_left_pin_direction_failed">Setting the left pin IO direction failed</string>
     <string name="gpio_driver_set_mid_pin_direction_failed">Setting intermediate pin IO direction failed</string>
     <string name="gpio_driver_set_right_pin_direction_failed">Setting the right pin IO direction failed</string>
+
+    <string name="game_fragment_show_result_you_win">You Win!! :)</string>
+    <string name="game_fragment_show_result_draw">Draw -_-</string>
+    <string name="game_fragment_show_result_you_lose">You Lose :(</string>
 
 </resources>

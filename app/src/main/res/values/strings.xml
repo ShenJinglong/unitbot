@@ -27,8 +27,10 @@
     <string name="maintain_fragment_red_value">红色分量： </string>
     <string name="maintain_fragment_green_value">绿色分量： </string>
     <string name="maintain_fragment_blue_value">蓝色分量： </string>
-    <string name="maintain_fragment_distance_sensor_title">距离传感器</string>
+    <string name="maintain_fragment_distance_sensor_title">距离传感器/语音</string>
     <string name="maintain_fragment_distance_value">距离： </string>
+    <string name="maintain_fragment_speech_rate">语速： </string>
+    <string name="maintain_fragment_tone">语调： </string>
     <string name="maintain_fragment_serial_baud">串口波特率</string>
     <string name="maintain_fragment_adjust_duoji">调试舵机</string>
     <string name="maintain_fragment_send">发送</string>
@@ -43,7 +45,9 @@
     <string name="gpio_driver_set_mid_pin_direction_failed">设置中引脚IO方向失败</string>
     <string name="gpio_driver_set_right_pin_direction_failed">设置右引脚IO方向失败</string>
 
-
+    <string name="game_fragment_show_result_you_win">你赢了！！ :)</string>
+    <string name="game_fragment_show_result_draw">平局 -_-</string>
+    <string name="game_fragment_show_result_you_lose">你输了 :(</string>
 
 
 

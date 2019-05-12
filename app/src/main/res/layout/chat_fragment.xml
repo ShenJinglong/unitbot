@@ -21,22 +21,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/robot_string_edit_text_hint_text"
-            android:textColor="#fff"
-            android:textColorHint="#fff"/>
+            android:textColor="#00796B"
+            android:textColorHint="#6600796B"/>
         
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/chat_fragment_send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/robot_string_send_button_text"
+            android:background="@drawable/send"
             android:paddingHorizontal="18dp"
             android:paddingVertical="7dp"
-
+            android:layout_marginRight="5dp"
+            android:text="@string/robot_string_send_button_text"
 
             app:qmui_borderWidth="0dp"
             android:textColor="#00796B"
-            app:qmui_backgroundColor="#fff"/>
-        
+            app:qmui_backgroundColor="#fff"
+
+            android:elevation="8dp"
+            />
+
     </LinearLayout>
 
 </LinearLayout>

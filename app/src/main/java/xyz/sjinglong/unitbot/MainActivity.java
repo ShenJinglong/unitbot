@@ -30,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer_layout);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        TTS.closeTTS();
+    }
+
     public void closeDrawer() {
         mDrawerLayout.closeDrawers();
     }

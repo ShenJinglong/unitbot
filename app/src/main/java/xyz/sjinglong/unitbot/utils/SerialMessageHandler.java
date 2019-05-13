@@ -55,13 +55,29 @@ public class SerialMessageHandler {
 
             int dataID = -1;
 
+            if (dataBag.get(dataBag.size() - 1) != ' ') {
+                return;
+            }
+
+            int spaceCount = 0;
+            for (Character item : dataBag) {
+                if (item.charValue() == ' ') {
+                    ++spaceCount;
+                }
+            }
+            if (spaceCount != 5) {
+                return;
+            }
+
             for (int j = dataBag.size() - 1; j >= 0; --j) {
                 if (dataBag.get(j) == ' ') {
                     ++dataID;
                 } else if (dataBag.get(j) == 'F' && dataBag.get(j - 1) == 'E') {
                     break;
-                } else {
+                } else if ('0' <= dataBag.get(j) && dataBag.get(j) <= '9'){
                     datas.get(dataID).append(dataBag.get(j));
+                } else {
+                    return;
                 }
             }
 

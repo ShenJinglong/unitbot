@@ -20,7 +20,7 @@ import static android.app.PendingIntent.getActivity;
 
 public class SerialDriver {
 
-    private String serialMessage = "2 34523 bg 453 2345 FE";
+    private String serialMessage = "DB 6266 363 363 153 FE";
     private int sendCounter = 0;
 
     private MainActivity mainActivity;

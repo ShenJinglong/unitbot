@@ -32,8 +32,8 @@ public class TTS {
 
         mTTS.setPitch(1.0f);
         pitch = 1.0f;
-        mTTS.setSpeechRate(0.8f);
-        speachRate = 0.8f;
+        mTTS.setSpeechRate(1.0f);
+        speachRate = 1.0f;
     }
 
     public static void setPitch(float value) {

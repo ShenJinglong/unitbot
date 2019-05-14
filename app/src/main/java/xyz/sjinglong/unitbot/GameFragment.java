@@ -146,7 +146,6 @@ public class GameFragment extends Fragment {
         beginGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 serialMessageHandler.parseMessage(serialDriver.getSerialMessage());
 
                 int redValue = serialMessageHandler.getRedValue();
@@ -154,31 +153,29 @@ public class GameFragment extends Fragment {
                 int blueValue = serialMessageHandler.getBlueValue();
                 int distanceValue = serialMessageHandler.getDistanceValue();
 
-                if (!(redValue >= 6000 && greenValue <= 2000 && blueValue <= 2000)
-                    && !(redValue <= 2000 && greenValue >= 6000 && blueValue <= 2000)
-                    && !(redValue <= 2000 && greenValue <= 2000 && blueValue >= 6000)) {
+                if (judgeBuff(redValue, greenValue, blueValue) == 0) {
                     new QMUIDialog.MessageDialogBuilder(getActivity())
-                            .setTitle("卡片")
-                            .setMessage("请插入卡片")
-                            .addAction("返回", new QMUIDialogAction.ActionListener() {
+                            .setTitle(getResources().getString(R.string.check_card_dialog_title))
+                            .setMessage(getResources().getString(R.string.check_card_dialog_message))
+                            .addAction(getResources().getString(R.string.back), new QMUIDialogAction.ActionListener() {
                                 @Override
                                 public void onClick(QMUIDialog qmuiDialog, int i) {
                                     qmuiDialog.dismiss();
                                 }
                             }).show();
+                    TTS.speakFLUSH(getResources().getString(R.string.check_card_dialog_message));
                 } else if (distanceValue <= 100) {
                     new QMUIDialog.MessageDialogBuilder(getActivity())
-                            .setTitle("距离")
-                            .setMessage("请与机器人保持 10cm 以上的距离")
-                            .addAction("返回", new QMUIDialogAction.ActionListener() {
+                            .setTitle(getResources().getString(R.string.check_distance_title))
+                            .setMessage(getResources().getString(R.string.check_distance_message))
+                            .addAction(getResources().getString(R.string.back), new QMUIDialogAction.ActionListener() {
                                 @Override
                                 public void onClick(QMUIDialog qmuiDialog, int i) {
                                     qmuiDialog.dismiss();
                                 }
                             }).show();
+                    TTS.speakFLUSH(getResources().getString(R.string.check_distance_message));
                 } else {
-
-
                     setLayoutVisibility(2);
                     enableRocker = 1;
 
@@ -187,8 +184,6 @@ public class GameFragment extends Fragment {
 
                     GameMaster.beginGame((GameFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout));
 
-                    gameUser.setBuff(0);
-                    gameComputer.setBuff();
 
                     // 设置Buff颜色
                     QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftBuffButton.getBackground();
@@ -206,7 +201,8 @@ public class GameFragment extends Fragment {
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightText.getBackground();
                     qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
 
-
+                    gameUser.setBuff(0);
+                    gameComputer.setBuff();
                     setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                     setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
 
@@ -214,12 +210,19 @@ public class GameFragment extends Fragment {
 
                     currentUserCardStatus = 7;
 
-                    if (redValue >= 6000 && greenValue <= 2000 && blueValue <= 2000) {
-                        leftBuffButton.callOnClick();
-                    } else if (redValue <= 2000 && greenValue >= 6000 && blueValue <= 2000) {
-                        middleBuffButton.callOnClick();
-                    } else if (redValue <= 2000 && greenValue <= 2000 && blueValue >= 6000) {
-                        rightBuffButton.callOnClick();
+                    switch (judgeBuff(redValue, greenValue, blueValue)) {
+                        case 1:
+                            leftBuffButton.callOnClick();
+                            break;
+                        case 2:
+                            middleBuffButton.callOnClick();
+                            break;
+                        case 3:
+                            rightBuffButton.callOnClick();
+                            break;
+                        default:
+                            beginGameButton.callOnClick();
+                            break;
                     }
                 }
             }
@@ -249,6 +252,7 @@ public class GameFragment extends Fragment {
 
                     }
                 });
+                leftButton.setText(Integer.toString(gameUser.getCards().get(0)));
                 leftButton.startAnimation(translateAnimation);
 
                 QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
@@ -282,6 +286,7 @@ public class GameFragment extends Fragment {
                     }
                 });
                 middleButton.startAnimation(translateAnimation);
+                middleButton.setText(Integer.toString(gameUser.getCards().get(1)));
 
 
                 QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
@@ -315,6 +320,7 @@ public class GameFragment extends Fragment {
                     }
                 });
                 rightButton.startAnimation(translateAnimation);
+                rightButton.setText(Integer.toString(gameUser.getCards().get(2)));
 
                 QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
                 roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
@@ -367,28 +373,28 @@ public class GameFragment extends Fragment {
                 int blueValue = serialMessageHandler.getBlueValue();
                 int distanceValue = serialMessageHandler.getDistanceValue();
 
-                if (!(redValue >= 6000 && greenValue <= 2000 && blueValue <= 2000)
-                        && !(redValue <= 2000 && greenValue >= 6000 && blueValue <= 2000)
-                        && !(redValue <= 2000 && greenValue <= 2000 && blueValue >= 6000)) {
+                if (judgeBuff(redValue, greenValue, blueValue) == 0) {
                     new QMUIDialog.MessageDialogBuilder(getActivity())
-                            .setTitle("卡片")
-                            .setMessage("请插入卡片")
-                            .addAction("返回", new QMUIDialogAction.ActionListener() {
+                            .setTitle(getResources().getString(R.string.check_card_dialog_title))
+                            .setMessage(getResources().getString(R.string.check_card_dialog_message))
+                            .addAction(getResources().getString(R.string.back), new QMUIDialogAction.ActionListener() {
                                 @Override
                                 public void onClick(QMUIDialog qmuiDialog, int i) {
                                     qmuiDialog.dismiss();
                                 }
                             }).show();
+                    TTS.speakFLUSH(getResources().getString(R.string.check_card_dialog_message));
                 } else if (distanceValue <= 100) {
                     new QMUIDialog.MessageDialogBuilder(getActivity())
-                            .setTitle("距离")
-                            .setMessage("请与机器人保持 10cm 以上的距离")
-                            .addAction("返回", new QMUIDialogAction.ActionListener() {
+                            .setTitle(getResources().getString(R.string.check_distance_title))
+                            .setMessage(getResources().getString(R.string.check_distance_message))
+                            .addAction(getResources().getString(R.string.back), new QMUIDialogAction.ActionListener() {
                                 @Override
                                 public void onClick(QMUIDialog qmuiDialog, int i) {
                                     qmuiDialog.dismiss();
                                 }
                             }).show();
+                    TTS.speakFLUSH(getResources().getString(R.string.check_distance_message));
                 } else {
                     setLayoutVisibility(2);
                     enableRocker = 1;
@@ -420,12 +426,19 @@ public class GameFragment extends Fragment {
 
                     currentUserCardStatus = 7;
 
-                    if (redValue >= 6000 && greenValue <= 2000 && blueValue <= 2000) {
-                        leftBuffButton.callOnClick();
-                    } else if (redValue <= 2000 && greenValue >= 6000 && blueValue <= 2000) {
-                        middleBuffButton.callOnClick();
-                    } else if (redValue <= 2000 && greenValue <= 2000 && blueValue >= 6000) {
-                        rightBuffButton.callOnClick();
+                    switch (judgeBuff(redValue, greenValue, blueValue)) {
+                        case 1:
+                            leftBuffButton.callOnClick();
+                            break;
+                        case 2:
+                            middleBuffButton.callOnClick();
+                            break;
+                        case 3:
+                            rightBuffButton.callOnClick();
+                            break;
+                        default:
+                            beginGameButton.callOnClick();
+                            break;
                     }
                 }
             }
@@ -848,6 +861,28 @@ public class GameFragment extends Fragment {
                         setButtonColor(2);
                     }
                 }
+            }
+        }
+    }
+
+    private int judgeBuff(int redValue, int greenValue, int blueValue) {
+        if (redValue > greenValue && redValue > blueValue) {
+            if (redValue - greenValue > 1500 || redValue - blueValue > 1500) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else if (greenValue > redValue && greenValue > blueValue) {
+            if (greenValue - redValue > 1500 || greenValue - blueValue > 1500) {
+                return 2;
+            } else {
+                return 0;
+            }
+        } else {
+            if (blueValue - redValue > 1500 || blueValue - greenValue > 1500) {
+                return 3;
+            } else {
+                return 0;
             }
         }
     }

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        TTS.closeTTS();
+        // TTS.closeTTS();
     }
 
     public void closeDrawer() {

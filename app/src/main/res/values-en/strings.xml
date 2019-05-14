@@ -50,4 +50,12 @@
     <string name="game_fragment_show_result_draw">Draw -_-</string>
     <string name="game_fragment_show_result_you_lose">You Lose :(</string>
 
+    <string name="check_card_dialog_title">Card</string>
+    <string name="check_card_dialog_message">Please insert a card</string>
+
+    <string name="check_distance_title">Distance</string>
+    <string name="check_distance_message">Please keep the distance of 10cm or more with the robot</string>
+
+    <string name="back">Back</string>
+
 </resources>

@@ -33,6 +33,7 @@
     <string name="maintain_fragment_speech_rate">Rate: </string>
     <string name="maintain_fragment_tone">Tone: </string>
     <string name="maintain_fragment_serial_baud">Serial port baud rate</string>
+    <string name="maintain_fragment_show_serial">Display serial data</string>
     <string name="maintain_fragment_adjust_duoji">Adjusting the steering gear</string>
     <string name="maintain_fragment_send">Send</string>
 

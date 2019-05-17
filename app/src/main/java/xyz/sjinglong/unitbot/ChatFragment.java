@@ -17,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.qmuiteam.qmui.layout.QMUILinearLayout;
+import com.qmuiteam.qmui.util.QMUIDisplayHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,7 @@ public class ChatFragment extends Fragment {
     private RecyclerView msgRecyclerView;
     private MsgAdapter adapter;
     private TuLingRobot tuLingRobot;
+    private QMUILinearLayout qmuiLinearLayout;
 
     @Nullable
     @Override
@@ -39,6 +43,7 @@ public class ChatFragment extends Fragment {
         inputText = (EditText)view.findViewById(R.id.chat_fragment_edit_text);
         send = (Button)view.findViewById(R.id.chat_fragment_send_button);
         msgRecyclerView = (RecyclerView)view.findViewById(R.id.chat_fragment_recycler_view);
+        qmuiLinearLayout = (QMUILinearLayout)view.findViewById(R.id.chat_fragment_QMUILayout);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         msgRecyclerView.setLayoutManager(layoutManager);
         adapter = new MsgAdapter(msgList);
@@ -65,6 +70,8 @@ public class ChatFragment extends Fragment {
                 }
             }
         });
+        qmuiLinearLayout.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 35),
+                QMUIDisplayHelper.dp2px(getContext(),14), 0.25f);
     }
 
     public void addMessage(Msg msg, int speakType) {

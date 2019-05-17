@@ -20,7 +20,11 @@ import static android.app.PendingIntent.getActivity;
 
 public class SerialDriver {
 
-    private String serialMessage = "DB 6266 363 363 153 FE";
+
+
+    private String serialMessage = "DB 6679 363 303 153 FE";
+    // private String serialMessage = "DB 66 3663 63 153 FE";
+    // private String serialMessage = "DB 66 363 3063 153 FE";
     private int sendCounter = 0;
 
     private MainActivity mainActivity;
@@ -42,6 +46,9 @@ public class SerialDriver {
             handler.sendMessage(message);
         }
     };
+    private boolean send2ChatFlag = false;
+
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -52,7 +59,9 @@ public class SerialDriver {
                         if (retSize > 0) {
                             String str = new String(buf, 0, retSize);
                             if (sendCounter == 0) {
-                                sendMessageToChatFragment(str, TTS.TYPE_SLIENT);
+                                if (send2ChatFlag) {
+                                    sendMessageToChatFragment(str, TTS.TYPE_SLIENT);
+                                }
                                 sendCounter = 0;
                             } else {
                                 ++sendCounter;
@@ -77,6 +86,10 @@ public class SerialDriver {
             devfd = -1;
             sendMessageToChatFragment(mainActivity.getResources().getString(R.string.robot_string_serial_open_failed_text), TTS.TYPE_ADD);
         }
+    }
+
+    public void changeSend2ChatState() {
+        send2ChatFlag = !send2ChatFlag;
     }
 
     public void closeSerial() {

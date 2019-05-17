@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:id="@+id/chat_fragment_QMUILayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/chat_fragment_background"
+        android:orientation="vertical"
+        app:qmui_outerNormalColor="?attr/qmui_config_color_background"
+        app:qmui_borderColor="?attr/qmui_config_color_separator"
+        app:qmui_showBorderOnlyBeforeL="true">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chat_fragment_recycler_view"
         android:layout_width="match_parent"
@@ -20,27 +30,31 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="bottom"
             android:hint="@string/robot_string_edit_text_hint_text"
-            android:textColor="#00796B"
-            android:textColorHint="#6600796B"/>
+            android:textColor="@color/chat_fragment_edit_text_text"
+            android:textColorHint="@color/chat_fragment_edit_text_hint"/>
         
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/chat_fragment_send_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/send"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="5dp"
             android:paddingHorizontal="18dp"
             android:paddingVertical="7dp"
             android:layout_marginRight="5dp"
             android:text="@string/robot_string_send_button_text"
+            app:qmui_radius="100dp"
 
             app:qmui_borderWidth="0dp"
-            android:textColor="#00796B"
-            app:qmui_backgroundColor="#fff"
+            android:textColor="@color/chat_fragment_send_button_text"
+            app:qmui_backgroundColor="@color/chat_fragment_send_button_background"
 
             android:elevation="8dp"
             />
 
     </LinearLayout>
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
 
 </LinearLayout>

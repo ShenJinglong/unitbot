@@ -47,9 +47,6 @@ import xyz.sjinglong.unitbot.utils.TTS;
 public class GameFragment extends Fragment {
     private static final String TAG = "GameFragment";
 
-    // private QMUILinearLayout mTestLayout;
-
-
     private QMUIRoundButton beginGameButton;
 
     private QMUIRoundButton leftButton;
@@ -76,7 +73,7 @@ public class GameFragment extends Fragment {
     private GameComputer gameComputer;
     private GameUser gameUser;
 
-    private SerialDriver serialDriver;
+    public SerialDriver serialDriver;
     private GPIODriver gpioDriver;
     private SerialMessageHandler serialMessageHandler;
     private int receiveControlFlag = 0;
@@ -131,9 +128,7 @@ public class GameFragment extends Fragment {
         rightBuffButton = view.findViewById(R.id.game_fragment_button_buff_right);
 
         showResult = view.findViewById(R.id.game_fragment_show_result);
-        // mTestLayout = view.findViewById(R.id.layout_for_test);
 
-        // mTestLayout.setRadiusAndShadow(QMUIDisplayHelper.dp2px(getContext(), 15), QMUIDisplayHelper.dp2px(getContext(), 100), 1.0f);
         setLayoutVisibility(1);
 
         return view;
@@ -187,26 +182,30 @@ public class GameFragment extends Fragment {
 
                     // 设置Buff颜色
                     QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                    leftBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                    middleBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                    rightBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
 
                     // 设置电脑卡牌初始颜色
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                    leftText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                    middleText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                    rightText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
 
                     gameUser.setBuff(0);
                     gameComputer.setBuff();
                     setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                     setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
-
-                    serialDriver.sendMessage("start game");
 
                     currentUserCardStatus = 7;
 
@@ -243,7 +242,7 @@ public class GameFragment extends Fragment {
                     public void onAnimationEnd(Animation animation) {
                         gameButtonHandler(1);
                         leftButton.setVisibility(View.GONE);
-                        serialDriver.sendMessage("left button clicked");
+                        // serialDriver.sendMessage("left button clicked");
                         currentUserCardStatus &= 3;
                     }
 
@@ -256,7 +255,8 @@ public class GameFragment extends Fragment {
                 leftButton.startAnimation(translateAnimation);
 
                 QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
-                roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                roundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+                leftButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
             }
         });
 
@@ -276,7 +276,7 @@ public class GameFragment extends Fragment {
                     public void onAnimationEnd(Animation animation) {
                         gameButtonHandler(2);
                         middleButton.setVisibility(View.GONE);
-                        serialDriver.sendMessage("middle button clicked");
+                        // serialDriver.sendMessage("middle button clicked");
                         currentUserCardStatus &= 5;
                     }
 
@@ -290,7 +290,8 @@ public class GameFragment extends Fragment {
 
 
                 QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
-                roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                roundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+                middleButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
             }
         });
 
@@ -310,7 +311,7 @@ public class GameFragment extends Fragment {
                     public void onAnimationEnd(Animation animation) {
                         gameButtonHandler(3);
                         rightButton.setVisibility(View.GONE);
-                        serialDriver.sendMessage("right button clicked");
+                        // serialDriver.sendMessage("right button clicked");
                         currentUserCardStatus &= 6;
                     }
 
@@ -323,7 +324,8 @@ public class GameFragment extends Fragment {
                 rightButton.setText(Integer.toString(gameUser.getCards().get(2)));
 
                 QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
-                roundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                roundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+                rightButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
             }
         });
 
@@ -331,11 +333,11 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!gameUser.buffed) {
+                    gameUser.setBuff(1);
                     QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_left_buff_background_selected));
+                    leftBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_left_buff_text_selected));
                 }
-                gameUser.setBuff(1);
-                setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
             }
         });
 
@@ -343,11 +345,11 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!gameUser.buffed) {
+                    gameUser.setBuff(2);
                     QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_middle_buff_background_selected));
+                    middleBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_middle_buff_text_selected));
                 }
-                gameUser.setBuff(2);
-                setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
             }
         });
 
@@ -355,11 +357,11 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!gameUser.buffed) {
+                    gameUser.setBuff(3);
                     QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_right_buff_background_selected));
+                    rightBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_right_buff_text_selected));
                 }
-                gameUser.setBuff(3);
-                setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
             }
         });
 
@@ -406,23 +408,27 @@ public class GameFragment extends Fragment {
                     gameComputer.setBuff();
 
                     QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                    leftBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                    middleBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                    rightBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
 
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                    leftText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                    middleText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
                     qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextBefore));
+                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                    rightText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
 
                     setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
                     setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
-
-                    serialDriver.sendMessage("start game");
 
                     currentUserCardStatus = 7;
 
@@ -437,7 +443,7 @@ public class GameFragment extends Fragment {
                             rightBuffButton.callOnClick();
                             break;
                         default:
-                            beginGameButton.callOnClick();
+                            tryAgainButton.callOnClick();
                             break;
                     }
                 }
@@ -515,32 +521,54 @@ public class GameFragment extends Fragment {
     public void setButtonColor(int index) {
         if (index == 0) {
             QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+            leftButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            middleButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            rightButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
         } else if (index == 1) {
             QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+            middleButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            leftButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            rightButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
         } else if (index == 2) {
             QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonAfter));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+            rightButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            leftButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            middleButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
+
         } else if (index == -1) {
             QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            rightButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            leftButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
+
+
             qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
-            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.chooseBuffButtonBefore));
+            qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background));
+            middleButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text));
         }
     }
 
@@ -555,15 +583,18 @@ public class GameFragment extends Fragment {
         switch (computerPlayCardIndex) {
             case 0:
                 qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)leftText.getBackground();
-                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextAfter));
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background_selected));
+                leftText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text_selected));
                 break;
             case 1:
                 qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)middleText.getBackground();
-                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextAfter));
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background_selected));
+                middleText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text_selected));
                 break;
             case 2:
                 qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable)rightText.getBackground();
-                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.computerTextAfter));
+                qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background_selected));
+                rightText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text_selected));
                 break;
             default:
                 break;
@@ -700,13 +731,50 @@ public class GameFragment extends Fragment {
         if (GameMaster.roundCounter == 1) {
             setTextColor(gameComputer.getPlayCradIndex1());
             addTextAnimation(gameComputer.getPlayCradIndex1(), judgeResult);
+            communicateWithSlave("" + buttonIndex + (gameComputer.getPlayCradIndex1() + 1));
         } else if (GameMaster.roundCounter == 2) {
             setTextColor(gameComputer.getPlayCradIndex2());
             addTextAnimation(gameComputer.getPlayCradIndex2(), judgeResult);
+            communicateWithSlave("" + buttonIndex + (gameComputer.getPlayCradIndex2() + 1));
         } else if (GameMaster.roundCounter == 3) {
             setTextColor(gameComputer.getPlayCradIndex3());
             addTextAnimation(gameComputer.getPlayCradIndex3(), judgeResult);
+            communicateWithSlave("" + buttonIndex + (gameComputer.getPlayCradIndex3() + 1));
             enableRocker = 0;
+        }
+    }
+
+    private void communicateWithSlave(String message) {
+        switch (message) {
+            case "11":
+                serialDriver.sendMessage("a");
+                break;
+            case "12":
+                serialDriver.sendMessage("b");
+                break;
+            case "13":
+                serialDriver.sendMessage("c");
+                break;
+            case "21":
+                serialDriver.sendMessage("d");
+                break;
+            case "22":
+                serialDriver.sendMessage("e");
+                break;
+            case "23":
+                serialDriver.sendMessage("f");
+                break;
+            case "31":
+                serialDriver.sendMessage("g");
+                break;
+            case "32":
+                serialDriver.sendMessage("h");
+                break;
+            case "33":
+                serialDriver.sendMessage("i");
+                break;
+            default:
+                break;
         }
     }
 

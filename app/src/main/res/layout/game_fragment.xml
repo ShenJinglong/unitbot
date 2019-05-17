@@ -21,7 +21,7 @@
                 android:gravity="center"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:textColor="#00796B"
+                android:textColor="@color/game_fragment_frame3_result"
                 />
 
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
@@ -37,9 +37,9 @@
                 android:text="@string/robot_string_try_again_text"
 
                 android:textSize="25dp"
-                android:textColor="#fff"
+                android:textColor="@color/game_fragment_frame3_try_again_button_text"
                 app:qmui_borderWidth="0dp"
-                app:qmui_backgroundColor="#00796B"
+                app:qmui_backgroundColor="@color/game_fragment_frame3_try_again_button_background"
 
                 android:elevation="8dp"
                 />
@@ -57,9 +57,9 @@
                 android:text="@string/robot_string_game_over_text"
 
                 android:textSize="25dp"
-                android:textColor="#fff"
+                android:textColor="@color/game_fragment_frame3_end_game_button_text"
                 app:qmui_borderWidth="0dp"
-                app:qmui_backgroundColor="#00796B"
+                app:qmui_backgroundColor="@color/game_fragment_frame3_end_game_button_background"
 
                 android:elevation="8dp"/>
 
@@ -97,8 +97,8 @@
 
                     android:textSize="50dp"
                     app:qmui_borderWidth="0dp"
-                    android:textColor="#00796B"
-                    app:qmui_backgroundColor="#fff"
+                    android:textColor="@color/game_fragment_frame2_robot_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_robot_card_background"
                     app:qmui_radius="15dp"
 
                     />
@@ -116,8 +116,8 @@
 
                     android:textSize="50dp"
                     app:qmui_borderWidth="0dp"
-                    android:textColor="#00796B"
-                    app:qmui_backgroundColor="#fff"
+                    android:textColor="@color/game_fragment_frame2_robot_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_robot_card_background"
                     app:qmui_radius="15dp"
                     />
 
@@ -134,8 +134,8 @@
 
                     android:textSize="50dp"
                     app:qmui_borderWidth="0dp"
-                    android:textColor="#00796B"
-                    app:qmui_backgroundColor="#fff"
+                    android:textColor="@color/game_fragment_frame2_robot_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_robot_card_background"
                     app:qmui_radius="15dp"
                     />
 
@@ -154,7 +154,8 @@
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:text="n + 4"
-                android:textColor="#00796B"
+                android:textColor="@color/game_fragment_frame2_buff_text"
+                app:qmui_backgroundColor="@color/game_fragment_frame2_buff_background"
 
                 app:qmui_radius="1dp"
                 app:qmui_borderWidth="0dp" />
@@ -165,7 +166,8 @@
                 android:layout_toLeftOf="@id/game_fragment_button_buff_center"
                 android:layout_centerVertical="true"
                 android:text="2n + 1"
-                android:textColor="#00796B"
+                android:textColor="@color/game_fragment_frame2_buff_text"
+                app:qmui_backgroundColor="@color/game_fragment_frame2_buff_background"
 
                 app:qmui_radiusBottomLeft="20dp"
                 app:qmui_radiusTopLeft="20dp"
@@ -179,7 +181,8 @@
                 android:layout_toRightOf="@id/game_fragment_button_buff_center"
                 android:layout_centerVertical="true"
                 android:text="n^2 / 3"
-                android:textColor="#00796B"
+                android:textColor="@color/game_fragment_frame2_buff_text"
+                app:qmui_backgroundColor="@color/game_fragment_frame2_buff_background"
 
                 app:qmui_radiusBottomLeft="0dp"
                 app:qmui_radiusTopLeft="0dp"
@@ -213,8 +216,8 @@
 
                     android:textSize="50dp"
                     app:qmui_borderWidth="0dp"
-                    android:textColor="#00796B"
-                    app:qmui_backgroundColor="#fff"
+                    android:textColor="@color/game_fragment_frame2_user_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_user_card_background"
                     app:qmui_radius="15dp"
                     />
 
@@ -231,8 +234,8 @@
 
                     android:textSize="50dp"
                     app:qmui_borderWidth="0dp"
-                    android:textColor="#00796B"
-                    app:qmui_backgroundColor="#fff"
+                    android:textColor="@color/game_fragment_frame2_user_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_user_card_background"
                     app:qmui_radius="15dp"
                     />
 
@@ -250,38 +253,10 @@
 
                     android:textSize="50dp"
                     app:qmui_borderWidth="0dp"
-                    android:textColor="#00796B"
-                    app:qmui_backgroundColor="#fff"
+                    android:textColor="@color/game_fragment_frame2_user_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_user_card_background"
                     app:qmui_radius="15dp"
                     />
-
-                <!--
-                <com.qmuiteam.qmui.layout.QMUILinearLayout
-                    android:id="@+id/layout_for_test"
-                    android:layout_width="260dp"
-                    android:layout_height="260dp"
-                    android:background="@color/qmui_config_color_white"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    app:qmui_outerNormalColor="?attr/qmui_config_color_background"
-                    app:qmui_borderColor="?attr/qmui_config_color_separator"
-                    app:qmui_showBorderOnlyBeforeL="true"
-                    >
-
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:text="Hello"
-                        android:gravity="center"/>
-
-
-
-                </com.qmuiteam.qmui.layout.QMUILinearLayout>
-                -->
             </RelativeLayout>
         </LinearLayout>
 
@@ -306,7 +281,7 @@
                 android:text="UnitTop"
                 android:gravity="center"
                 android:textSize="120dp"
-                android:textColor="#00796B"/>
+                android:textColor="@color/game_fragment_frame1_title"/>
 
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                 android:id="@+id/game_fragment_button_begin_geme"
@@ -315,11 +290,11 @@
                 android:layout_below="@id/game_fragment_game_title"
                 android:layout_centerHorizontal="true"
                 android:text="@string/robot_string_begin_game_text"
-                android:textColor="#fff"
+                android:textColor="@color/game_fragment_frame1_start_game_button_text"
                 android:paddingHorizontal="50dp"
                 android:paddingVertical="20dp"
                 android:layout_marginTop="30dp"
-                app:qmui_backgroundColor="#00796B"
+                app:qmui_backgroundColor="@color/game_fragment_frame1_start_game_button_background"
                 app:qmui_borderWidth="0dp"
                 android:textSize="25dp"
                 android:elevation="6dp"

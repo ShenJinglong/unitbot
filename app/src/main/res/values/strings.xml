@@ -32,6 +32,7 @@
     <string name="maintain_fragment_speech_rate">语速： </string>
     <string name="maintain_fragment_tone">语调： </string>
     <string name="maintain_fragment_serial_baud">串口波特率</string>
+    <string name="maintain_fragment_show_serial">显示串口数据</string>
     <string name="maintain_fragment_adjust_duoji">调试舵机</string>
     <string name="maintain_fragment_send">发送</string>
 

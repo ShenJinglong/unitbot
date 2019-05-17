@@ -45,6 +45,7 @@ public class MaintainFragment extends Fragment {
     private Button button;
 
     private QMUIRoundButton baudButton;
+    private QMUIRoundButton showSerial;
     private QMUIRoundButton duoji;
 
     private QMUILinearLayout colorWindowLayout;
@@ -96,6 +97,7 @@ public class MaintainFragment extends Fragment {
         button = view.findViewById(R.id.maintain_fragment_serial_button);
 
         baudButton = view.findViewById(R.id.maintain_fragment_baud);
+        showSerial = view.findViewById(R.id.maintain_fragment_show_serial);
         duoji = view.findViewById(R.id.maintain_fragment_duoji);
 
         colorWindowLayout = view.findViewById(R.id.maintain_fragment_color_info_window);
@@ -190,16 +192,24 @@ public class MaintainFragment extends Fragment {
             }
         });
 
+        showSerial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                serialDriver.changeSend2ChatState();
+            }
+        });
+
         duoji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                serialDriver.sendMessage("a");
             }
         });
 
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "hahaha", Toast.LENGTH_SHORT).show();
+
             }
         });
 

@@ -27,8 +27,8 @@
             android:text="@string/maintain_fragment_color_sensor_title"
             android:textSize="25dp"
             android:gravity="center"
-            android:background="#00796B"
-            android:textColor="#fff"/>
+            android:background="@color/maintain_fragment_window_color_title_background"
+            android:textColor="@color/maintain_fragment_window_color_title_text"/>
 
     </com.qmuiteam.qmui.layout.QMUILinearLayout>
 
@@ -36,7 +36,7 @@
         android:id="@+id/maintain_fragment_color_info_window"
         android:layout_width="260dp"
         android:layout_height="200dp"
-        android:background="@color/qmui_config_color_white"
+        android:background="@color/maintain_fragment_window_color_body_background"
         android:gravity="center"
         android:layout_below="@id/maintain_fragment_color_sensor_title"
         android:layout_marginTop="10dp"
@@ -55,7 +55,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="@string/maintain_fragment_red_value"
-            android:textColor="#DFCC3F3F"
+            android:textColor="@color/maintain_fragment_window_color_red_text"
+            android:background="@color/maintain_fragment_window_color_red_background"
             android:textSize="20dp"
             />
 
@@ -67,7 +68,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="@string/maintain_fragment_green_value"
-            android:textColor="#00796B"
+            android:textColor="@color/maintain_fragment_window_color_green_text"
+            android:background="@color/maintain_fragment_window_color_green_background"
             android:textSize="20dp"
             />
 
@@ -79,7 +81,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="@string/maintain_fragment_blue_value"
-            android:textColor="#DF3379C9"
+            android:textColor="@color/maintain_fragment_window_color_blue_text"
+            android:background="@color/maintain_fragment_window_color_blue_background"
             android:textSize="20dp"
             />
 
@@ -89,7 +92,7 @@
         android:id="@+id/maintain_fragment_distance_sensor_title"
         android:layout_width="260dp"
         android:layout_height="70dp"
-        android:background="@color/qmui_config_color_white"
+        android:background="@color/maintain_fragment_window_distance_body_background"
         android:gravity="center"
         android:layout_toRightOf="@id/maintain_fragment_color_sensor_title"
         android:layout_marginTop="25dp"
@@ -105,8 +108,8 @@
             android:text="@string/maintain_fragment_distance_sensor_title"
             android:textSize="25dp"
             android:gravity="center"
-            android:background="#00796B"
-            android:textColor="#fff"/>
+            android:background="@color/maintain_fragment_window_distance_title_background"
+            android:textColor="@color/maintain_fragment_window_distance_title_text"/>
 
     </com.qmuiteam.qmui.layout.QMUILinearLayout>
 
@@ -115,7 +118,7 @@
         android:id="@+id/maintain_fragment_distance_info_window"
         android:layout_width="260dp"
         android:layout_height="200dp"
-        android:background="@color/qmui_config_color_white"
+        android:background="@color/maintain_fragment_window_distance_body_background"
         android:gravity="center"
         android:layout_below="@id/maintain_fragment_distance_sensor_title"
         android:layout_toRightOf="@id/maintain_fragment_color_info_window"
@@ -135,7 +138,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="@string/maintain_fragment_distance_value"
-            android:textColor="#00796B"
+            android:textColor="@color/maintain_fragment_window_distance_distance_text"
+            android:background="@color/maintain_fragment_window_distance_distance_background"
             android:textSize="20dp"
             />
 
@@ -151,7 +155,8 @@
                 android:text="@string/maintain_fragment_speech_rate"
                 android:gravity="center"
                 android:paddingLeft="20dp"
-                android:textColor="#00796B"
+                android:textColor="@color/maintain_fragment_window_distance_rate_text"
+                android:background="@color/maintain_fragment_window_distance_rate_background"
                 android:textSize="20dp"/>
 
             <SeekBar
@@ -177,7 +182,8 @@
                 android:text="@string/maintain_fragment_tone"
                 android:gravity="center"
                 android:paddingLeft="20dp"
-                android:textColor="#00796B"
+                android:textColor="@color/maintain_fragment_window_distance_tone_text"
+                android:background="@color/maintain_fragment_window_distance_tone_background"
                 android:textSize="20dp"/>
 
             <SeekBar
@@ -192,17 +198,35 @@
         </LinearLayout>
 
     </com.qmuiteam.qmui.layout.QMUILinearLayout>
-    
 
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
         android:id="@+id/maintain_fragment_baud"
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_above="@id/maintain_fragment_duoji"
+        android:layout_above="@id/maintain_fragment_show_serial"
         android:layout_alignParentRight="true"
         android:text="@string/maintain_fragment_serial_baud"
-        android:textColor="#00796B"
-        app:qmui_backgroundColor="#fff"
+        android:textColor="@color/maintain_fragment_set_baud_button_text"
+        app:qmui_backgroundColor="@color/maintain_fragment_set_baud_button_background"
+        app:qmui_borderWidth="0dp"
+        android:paddingVertical="20dp"
+        app:qmui_radiusTopRight="0dp"
+        app:qmui_radiusBottomRight="0dp"
+        app:qmui_radiusTopLeft="20dp"
+        app:qmui_radiusBottomLeft="20dp"
+        android:textSize="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp"/>
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/maintain_fragment_show_serial"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/maintain_fragment_duoji"
+        android:layout_alignParentRight="true"
+        android:text="@string/maintain_fragment_show_serial"
+        android:textColor="@color/maintain_fragment_display_serial_button_text"
+        app:qmui_backgroundColor="@color/maintain_fragment_display_serial_button_background"
         app:qmui_borderWidth="0dp"
         android:paddingVertical="20dp"
         app:qmui_radiusTopRight="0dp"
@@ -221,8 +245,8 @@
         android:layout_above="@id/maintain_fragment_serial_linear_layout"
         android:layout_alignParentRight="true"
         android:text="@string/maintain_fragment_adjust_duoji"
-        android:textColor="#00796B"
-        app:qmui_backgroundColor="#fff"
+        android:textColor="@color/maintain_fragment_duoji_button_text"
+        app:qmui_backgroundColor="@color/maintain_fragment_duoji_button_background"
         app:qmui_borderWidth="0dp"
         android:paddingVertical="20dp"
         app:qmui_radiusTopRight="0dp"
@@ -248,7 +272,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#00796B"
+            android:textColor="@color/maintain_fragment_text"
+            android:textColorHint="@color/maintain_fragment_hint"
             android:layout_gravity="bottom"/>
 
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
@@ -256,8 +281,8 @@
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:text="@string/maintain_fragment_send"
-            android:textColor="#00796B"
-            app:qmui_backgroundColor="#fff"
+            android:textColor="@color/maintain_fragment_send_button_text"
+            app:qmui_backgroundColor="@color/maintain_fragment_send_button_background"
             app:qmui_borderWidth="0dp"
             android:paddingVertical="20dp"
             app:qmui_radiusTopRight="0dp"

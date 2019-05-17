@@ -42,6 +42,7 @@ public class GameMaster {
             if (result > 0) {
                 gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_user_win), TTS.TYPE_ADD);
                 gameFragment.showResult.setText(gameFragment.getResources().getString(R.string.game_fragment_show_result_you_win));
+                gameFragment.serialDriver.sendMessage("u");
             } else if (result == 0) {
                 gameFragment.sendMessageToChatFragment(gameFragment.getResources().getString(R.string.robot_string_draw_text), TTS.TYPE_ADD);
                 gameFragment.showResult.setText(gameFragment.getResources().getString(R.string.game_fragment_show_result_draw));

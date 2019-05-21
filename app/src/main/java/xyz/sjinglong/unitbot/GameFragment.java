@@ -103,7 +103,6 @@ public class GameFragment extends Fragment {
         }
     };
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -171,61 +170,112 @@ public class GameFragment extends Fragment {
                             }).show();
                     TTS.speakFLUSH(getResources().getString(R.string.check_distance_message));
                 } else {
-                    setLayoutVisibility(2);
-                    enableRocker = 1;
-
-                    gameComputer = new GameComputer();
-                    gameUser = new GameUser();
-
-                    GameMaster.beginGame((GameFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout));
 
 
-                    // 设置Buff颜色
-                    QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
-                    leftBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
-                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
-                    middleBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
-                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightBuffButton.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
-                    rightBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
+                    new QMUIDialog.MessageDialogBuilder(getActivity())
+                            .setTitle("游戏规则")
+                            .setMessage("点击游戏规则按钮展示游戏规则\n点击直接开始按钮开始游戏")
+                            .addAction("游戏规则", new QMUIDialogAction.ActionListener() {
+                                @Override
+                                public void onClick(QMUIDialog qmuiDialog, int i) {
+                                    qmuiDialog.dismiss();
 
-                    // 设置电脑卡牌初始颜色
-                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
-                    leftText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
-                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
-                    middleText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
-                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightText.getBackground();
-                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
-                    rightText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
+                                    sendMessageToChatFragment("hi~ 你好啊！我是来自 UNITETOP 公司的小维", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("现在让我来告诉你这个游戏怎么玩吧", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("首先，你需要挑选一张卡片，插入插卡口中", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("那这些卡片都有什么用呐？？嘿嘿，我先不告诉你，你只需要知道：", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("红色卡： 2 * n + 1", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("绿色卡： n + 4", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("蓝色卡： n ^ 2 / 3", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("hhh...不要被这些公式吓到哦！", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("进入游戏后，你和小维都会随机分到三张牌，这三张牌是从1～5中随机挑选的", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("然后就是...刚才你插入的那张卡，还记得它代表什么函数吗？", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("你出的每一张牌都会经过这个函数运算， 比如说你出一张 1, 然后你插入的是红卡， 那么你出的卡的实际数值就是...多少吖？？...你猜", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("hhh...就是 3 吖， 答对了吗？", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment("然后我俩轮流出牌，比谁的牌大，三局两胜，谁赢了谁就有糖吃哦 ：）", TTS.TYPE_ADD);
 
-                    gameUser.setBuff(0);
-                    gameComputer.setBuff();
-                    setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
-                    setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
+                                }
+                            })
+                            .addAction("直接开始", new QMUIDialogAction.ActionListener() {
+                                @Override
+                                public void onClick(QMUIDialog dialog, int index) {
 
-                    currentUserCardStatus = 7;
+                                    dialog.dismiss();
 
-                    switch (judgeBuff(redValue, greenValue, blueValue)) {
-                        case 1:
-                            leftBuffButton.callOnClick();
-                            break;
-                        case 2:
-                            middleBuffButton.callOnClick();
-                            break;
-                        case 3:
-                            rightBuffButton.callOnClick();
-                            break;
-                        default:
-                            beginGameButton.callOnClick();
-                            break;
-                    }
+                                    TTS.stopSpeak();
+
+                                    addBeginGameAnimation();
+                                    setLayoutVisibility(2);
+                                    enableRocker = 1;
+
+                                    gameComputer = new GameComputer();
+                                    gameUser = new GameUser();
+
+                                    GameMaster.beginGame((GameFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.functional_fragment_layout));
+
+
+                                    // 设置Buff颜色
+                                    QMUIRoundButtonDrawable qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftBuffButton.getBackground();
+                                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                                    leftBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
+                                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleBuffButton.getBackground();
+                                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                                    middleBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
+                                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightBuffButton.getBackground();
+                                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_buff_background));
+                                    rightBuffButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_buff_text));
+
+                                    // 设置电脑卡牌初始颜色
+                                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) leftText.getBackground();
+                                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                                    leftText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
+                                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) middleText.getBackground();
+                                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                                    middleText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
+                                    qmuiRoundButtonDrawable = (QMUIRoundButtonDrawable) rightText.getBackground();
+                                    qmuiRoundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_background));
+                                    rightText.setTextColor(getResources().getColor(R.color.game_fragment_frame2_robot_card_text));
+
+                                    gameUser.setBuff(0);
+                                    gameComputer.setBuff();
+                                    setButtonText(gameUser.getCards().get(0), gameUser.getCards().get(1), gameUser.getCards().get(2));
+                                    setTextText(gameComputer.getCards().get(0), gameComputer.getCards().get(1), gameComputer.getCards().get(2));
+
+                                    currentUserCardStatus = 7;
+
+                                    switch (judgeBuff(redValue, greenValue, blueValue)) {
+                                        case 1:
+                                            leftBuffButton.callOnClick();
+                                            break;
+                                        case 2:
+                                            middleBuffButton.callOnClick();
+                                            break;
+                                        case 3:
+                                            rightBuffButton.callOnClick();
+                                            break;
+                                        default:
+                                            beginGameButton.callOnClick();
+                                            break;
+                                    }
+
+                                }
+                            }).show();
+
+
                 }
             }
         });
+
+
+
+
+
+
+
+
+
+        /*
+
 
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,6 +379,16 @@ public class GameFragment extends Fragment {
             }
         });
 
+
+        */
+
+
+
+
+
+
+
+
         leftBuffButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -398,6 +458,7 @@ public class GameFragment extends Fragment {
                             }).show();
                     TTS.speakFLUSH(getResources().getString(R.string.check_distance_message));
                 } else {
+                    addBeginGameAnimation();
                     setLayoutVisibility(2);
                     enableRocker = 1;
                     gameUser = new GameUser();
@@ -470,6 +531,97 @@ public class GameFragment extends Fragment {
         gpioDriver.closeGPIO();
         timer.cancel();
         super.onDestroy();
+    }
+
+    private void leftButtonOnclick() {
+        Animation translateAnimation = new TranslateAnimation(0, 0, 0, -35);
+        translateAnimation.setDuration(1000);
+        translateAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                gameButtonHandler(1);
+                leftButton.setVisibility(View.GONE);
+                // serialDriver.sendMessage("left button clicked");
+                currentUserCardStatus &= 3;
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        leftButton.setText(Integer.toString(gameUser.getCards().get(0)));
+        leftButton.startAnimation(translateAnimation);
+
+        QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)leftButton.getBackground();
+        roundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+        leftButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
+    }
+
+    private void middleButtonOnclick() {
+        Animation translateAnimation = new TranslateAnimation(0, 0, 0, -35);
+        translateAnimation.setDuration(1000);
+        translateAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                gameButtonHandler(2);
+                middleButton.setVisibility(View.GONE);
+                // serialDriver.sendMessage("middle button clicked");
+                currentUserCardStatus &= 5;
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        middleButton.startAnimation(translateAnimation);
+        middleButton.setText(Integer.toString(gameUser.getCards().get(1)));
+
+
+        QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)middleButton.getBackground();
+        roundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+        middleButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
+    }
+
+    private void rightButtonOnclick() {
+        Animation translateAnimation = new TranslateAnimation(0,0, 0, -35);
+        translateAnimation.setDuration(1000);
+        translateAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                gameButtonHandler(3);
+                rightButton.setVisibility(View.GONE);
+                // serialDriver.sendMessage("right button clicked");
+                currentUserCardStatus &= 6;
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        rightButton.startAnimation(translateAnimation);
+        rightButton.setText(Integer.toString(gameUser.getCards().get(2)));
+
+        QMUIRoundButtonDrawable roundButtonDrawable = (QMUIRoundButtonDrawable)rightButton.getBackground();
+        roundButtonDrawable.setColor(getResources().getColor(R.color.game_fragment_frame2_user_card_background_selected));
+        rightButton.setTextColor(getResources().getColor(R.color.game_fragment_frame2_user_card_text_selected));
     }
 
     public void setLayoutVisibility(int index) {
@@ -803,11 +955,14 @@ public class GameFragment extends Fragment {
                     setButtonColor(currentButtonSelection);
                 } else if (currentRockerStatus == 10) {
                     if (currentButtonSelection == 0) {
-                        leftButton.callOnClick();
+                        // leftButton.callOnClick();
+                        leftButtonOnclick();
                     } else if (currentButtonSelection == 1) {
-                        middleButton.callOnClick();
+                        // middleButton.callOnClick();
+                        middleButtonOnclick();
                     } else if (currentButtonSelection == 2) {
-                        rightButton.callOnClick();
+                        // rightButton.callOnClick();
+                        rightButtonOnclick();
                     }
                     currentButtonSelection = -1;
   //                  setButtonColor(currentButtonSelection);
@@ -848,19 +1003,25 @@ public class GameFragment extends Fragment {
                 } else if (currentRockerStatus == 10) {
                     if (currentButtonSelection == 0) {
                         if (currentUserCardStatus == 3) {
-                            middleButton.callOnClick();
+                            // middleButton.callOnClick();
+                            middleButtonOnclick();
                         } else if (currentUserCardStatus == 5) {
-                            leftButton.callOnClick();
+                            // leftButton.callOnClick();
+                            leftButtonOnclick();
                         } else if (currentUserCardStatus == 6) {
-                            leftButton.callOnClick();
+                            // leftButton.callOnClick();
+                            leftButtonOnclick();
                         }
                     } else if (currentButtonSelection == 1) {
                         if (currentUserCardStatus == 3) {
-                            rightButton.callOnClick();
+                            // rightButton.callOnClick();
+                            rightButtonOnclick();
                         } else if (currentUserCardStatus == 5) {
-                            rightButton.callOnClick();
+                            // rightButton.callOnClick();
+                            rightButtonOnclick();
                         } else if (currentUserCardStatus == 6) {
-                            middleButton.callOnClick();
+                            // middleButton.callOnClick();
+                            middleButtonOnclick();
                         }
                     }
                     currentButtonSelection = -1;
@@ -907,11 +1068,14 @@ public class GameFragment extends Fragment {
                     }
                 } else if (currentRockerStatus == 10) {
                     if (currentUserCardStatus == 4) {
-                        leftButton.callOnClick();
+                        // leftButton.callOnClick();
+                        leftButtonOnclick();
                     } else if (currentUserCardStatus == 2) {
-                        middleButton.callOnClick();
+                        // middleButton.callOnClick();
+                        middleButtonOnclick();
                     } else if (currentUserCardStatus == 1) {
-                        rightButton.callOnClick();
+                        // rightButton.callOnClick();
+                        rightButtonOnclick();
                     }
                     currentButtonSelection = -1;
   //                  setButtonColor(currentButtonSelection);
@@ -953,5 +1117,41 @@ public class GameFragment extends Fragment {
                 return 0;
             }
         }
+    }
+
+    private void addBeginGameAnimation() {
+        Animation translateAnimation1 = new TranslateAnimation(0, 0, 300, 0);
+        translateAnimation1.setDuration(1000);
+        leftButton.startAnimation(translateAnimation1);
+
+
+        Animation translateAnimation2 = new TranslateAnimation(0, 0, 300, 0);
+        translateAnimation2.setDuration(1000);
+        translateAnimation2.setStartOffset(200);
+        middleButton.startAnimation(translateAnimation2);
+
+
+
+        Animation translateAnimation3 = new TranslateAnimation(0, 0, 300, 0);
+        translateAnimation3.setDuration(1000);
+        translateAnimation3.setStartOffset(400);
+        rightButton.startAnimation(translateAnimation3);
+
+        Animation translateAnimation4 = new TranslateAnimation(0, 0, -300, 0);
+        translateAnimation4.setDuration(1000);
+        leftText.startAnimation(translateAnimation4);
+
+
+        Animation translateAnimation5 = new TranslateAnimation(0, 0, -300, 0);
+        translateAnimation5.setDuration(1000);
+        translateAnimation5.setStartOffset(200);
+        middleText.startAnimation(translateAnimation5);
+
+
+
+        Animation translateAnimation6 = new TranslateAnimation(0, 0, -300, 0);
+        translateAnimation6.setDuration(1000);
+        translateAnimation6.setStartOffset(400);
+        rightText.startAnimation(translateAnimation6);
     }
 }

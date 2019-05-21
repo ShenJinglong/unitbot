@@ -77,9 +77,9 @@ public class ChatFragment extends Fragment {
     public void addMessage(Msg msg, int speakType) {
         msgList.add(msg);
         adapter.notifyItemInserted(msgList.size() - 1);
-        while (msgList.size() > 20) {
-            msgList.remove(2);
-            adapter.notifyItemRemoved(2);
+        while (msgList.size() > 40) {
+            msgList.remove(14);
+            adapter.notifyItemRemoved(14);
         }
         msgRecyclerView.scrollToPosition(msgList.size() - 1);
 
@@ -91,9 +91,60 @@ public class ChatFragment extends Fragment {
 
     private void initMsgs() {
         Msg msg1 = new Msg(getResources().getString(R.string.robot_string_game_rule_title), Msg.TYPE_RECEIVE);
-        Msg msg2 = new Msg(getResources().getString(R.string.robot_string_game_rule_text)
+
+        /*
+        Msg msg2 = new Msg(getResources().getString(R.string.robot_string_game_rule_text1)
                 , Msg.TYPE_RECEIVE);
+        Msg msg3 = new Msg(getResources().getString(R.string.robot_string_game_rule_text2)
+                , Msg.TYPE_RECEIVE);
+        Msg msg4 = new Msg(getResources().getString(R.string.robot_string_game_rule_text3)
+                , Msg.TYPE_RECEIVE);
+
+
+        */
+
+
+        Msg msg2 = new Msg("hi~ 你好啊！我是来自 UNITETOP 公司的小维"
+                , Msg.TYPE_RECEIVE);
+        Msg msg3 = new Msg("现在让我来告诉你这个游戏怎么玩吧~"
+                , Msg.TYPE_RECEIVE);
+        Msg msg4 = new Msg("首先，你需要挑选一张卡片，插入插卡口中"
+                , Msg.TYPE_RECEIVE);
+        Msg msg5 = new Msg("那这些卡片都有什么用呐？？嘿嘿，我先不告诉你，你只需要知道："
+                , Msg.TYPE_RECEIVE);
+        Msg msg6 = new Msg("红色卡： 2 * n + 1"
+                , Msg.TYPE_RECEIVE);
+        Msg msg7 = new Msg("绿色卡： n + 4"
+                , Msg.TYPE_RECEIVE);
+        Msg msg8 = new Msg("蓝色卡： n ^ 2 / 3"
+                , Msg.TYPE_RECEIVE);
+        Msg msg9 = new Msg("hhh...不要被这些公式吓到哦！"
+                , Msg.TYPE_RECEIVE);
+        Msg msg10 = new Msg("进入游戏后，你和小维都会随机分到三张牌，这三张牌是从1～5中随机挑选的"
+                , Msg.TYPE_RECEIVE);
+        Msg msg11 = new Msg("然后就是...刚才你插入的那张卡，还记得它代表什么函数吗？"
+                , Msg.TYPE_RECEIVE);
+        Msg msg12 = new Msg("你出的每一张牌都会经过这个函数运算， 比如说你出一张 1, 然后你插入的是红卡， 那么你出的卡的实际数值就是...多少吖？？...你猜"
+                , Msg.TYPE_RECEIVE);
+        Msg msg13 = new Msg("hhh...就是 3 吖， 答对了吗？"
+                , Msg.TYPE_RECEIVE);
+        Msg msg14 = new Msg("然后我俩轮流出牌，比谁的牌大，三局两胜，谁赢了谁就有糖吃哦 ：）"
+                , Msg.TYPE_RECEIVE);
+
         msgList.add(msg1);
         msgList.add(msg2);
+        msgList.add(msg3);
+        msgList.add(msg4);
+        msgList.add(msg5);
+        msgList.add(msg6);
+        msgList.add(msg7);
+        msgList.add(msg8);
+        msgList.add(msg9);
+        msgList.add(msg10);
+        msgList.add(msg11);
+        msgList.add(msg12);
+        msgList.add(msg13);
+        msgList.add(msg14);
+
     }
 }

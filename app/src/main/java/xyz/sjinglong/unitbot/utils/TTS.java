@@ -36,6 +36,10 @@ public class TTS {
         speachRate = 1.0f;
     }
 
+    public static boolean isSpeaking() {
+        return mTTS.isSpeaking();
+    }
+
     public static void setPitch(float value) {
         mTTS.setPitch(value);
         pitch = value;
@@ -60,6 +64,10 @@ public class TTS {
 
     public static void speakADD(String words) {
         mTTS.speak(words, TextToSpeech.QUEUE_ADD, null);
+    }
+
+    public static void stopSpeak() {
+        mTTS.stop();
     }
 
     public static void closeTTS() {

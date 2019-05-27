@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <!--
+
+    <color name="chooseBuffButtonAfter">#555555</color>
+    <color name="chooseBuffButtonBefore">#ffffff</color>
+
+    <color name="userButtonAfter">#555555</color>
+    <color name="userBuffButtonBefore">#ffffff</color>
+
+    <color name="computerTextAfter">#555555</color>
+    <color name="computerTextBefore">#ffffff</color>
+
+    -->
+
+
+
+
+
+
+
+
+<!--
+
+
+
+    <color name="game_fragment_frame1_title">#00796B</color>
+    <color name="game_fragment_frame1_start_game_button_background">#00796B</color>
+    <color name="game_fragment_frame1_start_game_button_text">#fff</color>
+
+    <color name="game_fragment_frame2_user_card_text">#00796B</color>
+    <color name="game_fragment_frame2_user_card_background">#fff</color>
+    <color name="game_fragment_frame2_user_card_text_selected">#00796B</color>
+    <color name="game_fragment_frame2_user_card_background_selected">#555555</color>
+
+    <color name="game_fragment_frame2_robot_card_text">#00796B</color>
+    <color name="game_fragment_frame2_robot_card_background">#fff</color>
+    <color name="game_fragment_frame2_robot_card_text_selected">#00796B</color>
+    <color name="game_fragment_frame2_robot_card_background_selected">#555555</color>
+
+    <color name="game_fragment_frame2_buff_text">#00796B</color>
+    <color name="game_fragment_frame2_buff_background">#fff</color>
+    <color name="game_fragment_frame2_buff_text_selected">#00796B</color>
+    <color name="game_fragment_frame2_buff_background_selected">#555555</color>
+
+    <color name="game_fragment_frame3_result">#00796B</color>
+    <color name="game_fragment_frame3_try_again_button_background">#00796B</color>
+    <color name="game_fragment_frame3_try_again_button_text">#fff</color>
+    <color name="game_fragment_frame3_end_game_button_background">#00796B</color>
+    <color name="game_fragment_frame3_end_game_button_text">#fff</color>
+
+
+
+
+
+
+
+
+
+
+
+    <color name="chat_fragment_edit_text_hint">#6600796B</color>
+    <color name="chat_fragment_edit_text_text">#00796B</color>
+    <color name="chat_fragment_send_button_background">#fff</color>
+    <color name="chat_fragment_send_button_text">#00796B</color>
+    <color name="chat_fragment_words">#fff</color>
+
+
+
+
+
+
+
+    <color name="nav_fragment_background">#E600493F</color>
+    <color name="nav_fragment_title">#fff</color>
+
+
+
+
+
+
+
+
+    <color name="maintain_fragment_window_color_title_background">#00796B</color>
+    <color name="maintain_fragment_window_color_title_text">#fff</color>
+
+    <color name="maintain_fragment_window_color_red_background">#fff</color>
+    <color name="maintain_fragment_window_color_red_text">#DFCC3F3F</color>
+
+    <color name="maintain_fragment_window_color_green_background">#fff</color>
+    <color name="maintain_fragment_window_color_green_text">#DF00796B</color>
+
+    <color name="maintain_fragment_window_color_blue_background">#fff</color>
+    <color name="maintain_fragment_window_color_blue_text">#DF3379C9</color>
+
+    <color name="maintain_fragment_window_distance_title_background">#00796B</color>
+    <color name="maintain_fragment_window_distance_title_text">#fff</color>
+
+    <color name="maintain_fragment_window_distance_distance_background">#fff</color>
+    <color name="maintain_fragment_window_distance_distance_text">#00796B</color>
+
+    <color name="maintain_fragment_window_distance_rate_background">#fff</color>
+    <color name="maintain_fragment_window_distance_rate_text">#00796B</color>
+
+    <color name="maintain_fragment_window_distance_tone_background">#fff</color>
+    <color name="maintain_fragment_window_distance_tone_text">#00796B</color>
+
+    <color name="maintain_fragment_set_baud_button_background">#00796B</color>
+    <color name="maintain_fragment_set_baud_button_text">#fff</color>
+
+    <color name="maintain_fragment_display_serial_button_background">#fff</color>
+    <color name="maintain_fragment_display_serial_button_text">#00796B</color>
+
+    <color name="maintain_fragment_duoji_button_background">#00796B</color>
+    <color name="maintain_fragment_duoji_button_text">#fff</color>
+
+    <color name="maintain_fragment_send_button_background">#fff</color>
+    <color name="maintain_fragment_send_button_text">#00796B</color>
+
+    <color name="maintain_fragment_hint">#6600796B</color>
+    <color name="maintain_fragment_text">#00796B</color>
+
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+</resources>

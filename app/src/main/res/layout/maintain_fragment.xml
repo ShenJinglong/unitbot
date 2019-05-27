@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:id="@+id/maintain_fragment_color_sensor_title"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:background="@color/qmui_config_color_white"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="40dp"
+        android:orientation="vertical"
+        app:qmui_outerNormalColor="?attr/qmui_config_color_background"
+        app:qmui_borderColor="?attr/qmui_config_color_separator"
+        app:qmui_showBorderOnlyBeforeL="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/maintain_fragment_color_sensor_title"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/maintain_fragment_window_color_title_background"
+            android:textColor="@color/maintain_fragment_window_color_title_text"/>
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+    <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:id="@+id/maintain_fragment_color_info_window"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
+        android:background="@color/maintain_fragment_window_color_body_background"
+        android:gravity="center"
+        android:layout_below="@id/maintain_fragment_color_sensor_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:orientation="vertical"
+        app:qmui_outerNormalColor="?attr/qmui_config_color_background"
+        app:qmui_borderColor="?attr/qmui_config_color_separator"
+        app:qmui_showBorderOnlyBeforeL="true"
+        >
+
+        <TextView
+            android:id="@+id/maintain_fragment_color_red"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/maintain_fragment_red_value"
+            android:textColor="@color/maintain_fragment_window_color_red_text"
+            android:background="@color/maintain_fragment_window_color_red_background"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/maintain_fragment_color_green"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/maintain_fragment_green_value"
+            android:textColor="@color/maintain_fragment_window_color_green_text"
+            android:background="@color/maintain_fragment_window_color_green_background"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/maintain_fragment_color_blue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/maintain_fragment_blue_value"
+            android:textColor="@color/maintain_fragment_window_color_blue_text"
+            android:background="@color/maintain_fragment_window_color_blue_background"
+            android:textSize="20dp"
+            />
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+    <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:id="@+id/maintain_fragment_distance_sensor_title"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:background="@color/maintain_fragment_window_distance_body_background"
+        android:gravity="center"
+        android:layout_toRightOf="@id/maintain_fragment_color_sensor_title"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:orientation="vertical"
+        app:qmui_outerNormalColor="?attr/qmui_config_color_background"
+        app:qmui_borderColor="?attr/qmui_config_color_separator"
+        app:qmui_showBorderOnlyBeforeL="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/maintain_fragment_distance_sensor_title"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/maintain_fragment_window_distance_title_background"
+            android:textColor="@color/maintain_fragment_window_distance_title_text"/>
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+
+    <com.qmuiteam.qmui.layout.QMUILinearLayout
+        android:id="@+id/maintain_fragment_distance_info_window"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
+        android:background="@color/maintain_fragment_window_distance_body_background"
+        android:gravity="center"
+        android:layout_below="@id/maintain_fragment_distance_sensor_title"
+        android:layout_toRightOf="@id/maintain_fragment_color_info_window"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:orientation="vertical"
+        app:qmui_outerNormalColor="?attr/qmui_config_color_background"
+        app:qmui_borderColor="?attr/qmui_config_color_separator"
+        app:qmui_showBorderOnlyBeforeL="true"
+        >
+
+        <TextView
+            android:id="@+id/maintain_fragment_distance_value"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/maintain_fragment_distance_value"
+            android:textColor="@color/maintain_fragment_window_distance_distance_text"
+            android:background="@color/maintain_fragment_window_distance_distance_background"
+            android:textSize="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/maintain_fragment_speech_rate"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:textColor="@color/maintain_fragment_window_distance_rate_text"
+                android:background="@color/maintain_fragment_window_distance_rate_background"
+                android:textSize="20dp"/>
+
+            <SeekBar
+                android:id="@+id/TTS_speach_rate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:max="20"
+                android:min="1"
+                android:progress="10"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/maintain_fragment_tone"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:textColor="@color/maintain_fragment_window_distance_tone_text"
+                android:background="@color/maintain_fragment_window_distance_tone_background"
+                android:textSize="20dp"/>
+
+            <SeekBar
+                android:id="@+id/TTS_pitch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:max="20"
+                android:min="1"
+                android:progress="10"/>
+
+        </LinearLayout>
+
+    </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/maintain_fragment_baud"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/maintain_fragment_show_serial"
+        android:layout_alignParentRight="true"
+        android:text="@string/maintain_fragment_serial_baud"
+        android:textColor="@color/maintain_fragment_set_baud_button_text"
+        app:qmui_backgroundColor="@color/maintain_fragment_set_baud_button_background"
+        app:qmui_borderWidth="0dp"
+        android:paddingVertical="20dp"
+        app:qmui_radiusTopRight="0dp"
+        app:qmui_radiusBottomRight="0dp"
+        app:qmui_radiusTopLeft="20dp"
+        app:qmui_radiusBottomLeft="20dp"
+        android:textSize="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp"/>
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/maintain_fragment_show_serial"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/maintain_fragment_duoji"
+        android:layout_alignParentRight="true"
+        android:text="@string/maintain_fragment_show_serial"
+        android:textColor="@color/maintain_fragment_display_serial_button_text"
+        app:qmui_backgroundColor="@color/maintain_fragment_display_serial_button_background"
+        app:qmui_borderWidth="0dp"
+        android:paddingVertical="20dp"
+        app:qmui_radiusTopRight="0dp"
+        app:qmui_radiusBottomRight="0dp"
+        app:qmui_radiusTopLeft="20dp"
+        app:qmui_radiusBottomLeft="20dp"
+        android:textSize="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp"/>
+    
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/maintain_fragment_duoji"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/maintain_fragment_serial_linear_layout"
+        android:layout_alignParentRight="true"
+        android:text="@string/maintain_fragment_adjust_duoji"
+        android:textColor="@color/maintain_fragment_duoji_button_text"
+        app:qmui_backgroundColor="@color/maintain_fragment_duoji_button_background"
+        app:qmui_borderWidth="0dp"
+        android:paddingVertical="20dp"
+        app:qmui_radiusTopRight="0dp"
+        app:qmui_radiusBottomRight="0dp"
+        app:qmui_radiusTopLeft="20dp"
+        app:qmui_radiusBottomLeft="20dp"
+        android:textSize="15dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/maintain_fragment_serial_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/maintain_fragment_serial_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/maintain_fragment_text"
+            android:textColorHint="@color/maintain_fragment_hint"
+            android:layout_gravity="bottom"/>
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/maintain_fragment_serial_button"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="@string/maintain_fragment_send"
+            android:textColor="@color/maintain_fragment_send_button_text"
+            app:qmui_backgroundColor="@color/maintain_fragment_send_button_background"
+            app:qmui_borderWidth="0dp"
+            android:paddingVertical="20dp"
+            app:qmui_radiusTopRight="0dp"
+            app:qmui_radiusBottomRight="0dp"
+            app:qmui_radiusTopLeft="20dp"
+            app:qmui_radiusBottomLeft="20dp"
+            android:textSize="15dp"
+            android:layout_marginBottom="15dp"
+            android:elevation="5dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

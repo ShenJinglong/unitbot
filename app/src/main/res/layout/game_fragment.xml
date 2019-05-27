@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_result">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/game_fragment_show_result"
+                android:layout_width="800dp"
+                android:layout_height="300dp"
+                android:textSize="100dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:textColor="@color/game_fragment_frame3_result"
+                />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_try_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_fragment_show_result"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="30dp"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="20dp"
+                android:text="@string/robot_string_try_again_text"
+
+                android:textSize="25dp"
+                android:textColor="@color/game_fragment_frame3_try_again_button_text"
+                app:qmui_borderWidth="0dp"
+                app:qmui_backgroundColor="@color/game_fragment_frame3_try_again_button_background"
+
+                android:elevation="8dp"
+                />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_game_over"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_fragment_show_result"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="150dp"
+                android:layout_marginTop="30dp"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="20dp"
+                android:text="@string/robot_string_game_over_text"
+
+                android:textSize="25dp"
+                android:textColor="@color/game_fragment_frame3_end_game_button_text"
+                app:qmui_borderWidth="0dp"
+                app:qmui_backgroundColor="@color/game_fragment_frame3_end_game_button_background"
+
+                android:elevation="8dp"/>
+
+        </RelativeLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/frame_game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/game_fragment_text_left"
+
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="25dp"
+
+                    android:elevation="8dp"
+
+                    android:textSize="50dp"
+                    app:qmui_borderWidth="0dp"
+                    android:textColor="@color/game_fragment_frame2_robot_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_robot_card_background"
+                    app:qmui_radius="15dp"
+
+                    />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/game_fragment_text_middle"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="25dp"
+
+                    android:elevation="8dp"
+
+                    android:textSize="50dp"
+                    app:qmui_borderWidth="0dp"
+                    android:textColor="@color/game_fragment_frame2_robot_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_robot_card_background"
+                    app:qmui_radius="15dp"
+                    />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/game_fragment_text_right"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="25dp"
+
+                    android:elevation="8dp"
+
+                    android:textSize="50dp"
+                    app:qmui_borderWidth="0dp"
+                    android:textColor="@color/game_fragment_frame2_robot_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_robot_card_background"
+                    app:qmui_radius="15dp"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25">
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_buff_center"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:text="n + 4"
+                android:textColor="@color/game_fragment_frame2_buff_text"
+                app:qmui_backgroundColor="@color/game_fragment_frame2_buff_background"
+
+                app:qmui_radius="1dp"
+                app:qmui_borderWidth="0dp" />
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_buff_left"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_toLeftOf="@id/game_fragment_button_buff_center"
+                android:layout_centerVertical="true"
+                android:text="2n + 1"
+                android:textColor="@color/game_fragment_frame2_buff_text"
+                app:qmui_backgroundColor="@color/game_fragment_frame2_buff_background"
+
+                app:qmui_radiusBottomLeft="20dp"
+                app:qmui_radiusTopLeft="20dp"
+                app:qmui_radiusBottomRight="0dp"
+                app:qmui_radiusTopRight="0dp"
+                app:qmui_borderWidth="0dp" />
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_buff_right"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/game_fragment_button_buff_center"
+                android:layout_centerVertical="true"
+                android:text="n^2 / 3"
+                android:textColor="@color/game_fragment_frame2_buff_text"
+                app:qmui_backgroundColor="@color/game_fragment_frame2_buff_background"
+
+                app:qmui_radiusBottomLeft="0dp"
+                app:qmui_radiusTopLeft="0dp"
+                app:qmui_radiusBottomRight="20dp"
+                app:qmui_radiusTopRight="20dp"
+                app:qmui_borderWidth="0dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/game_fragment_button_left"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_centerVertical="true"
+
+                    android:elevation="8dp"
+
+                    android:textSize="50dp"
+                    app:qmui_borderWidth="0dp"
+                    android:textColor="@color/game_fragment_frame2_user_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_user_card_background"
+                    app:qmui_radius="15dp"
+                    />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/game_fragment_button_middle"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_centerVertical="true"
+
+                    android:elevation="8dp"
+
+                    android:textSize="50dp"
+                    app:qmui_borderWidth="0dp"
+                    android:textColor="@color/game_fragment_frame2_user_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_user_card_background"
+                    app:qmui_radius="15dp"
+                    />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/game_fragment_button_right"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_centerVertical="true"
+
+                    android:elevation="8dp"
+
+                    android:textSize="50dp"
+                    app:qmui_borderWidth="0dp"
+                    android:textColor="@color/game_fragment_frame2_user_card_text"
+                    app:qmui_backgroundColor="@color/game_fragment_frame2_user_card_background"
+                    app:qmui_radius="15dp"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_begin">
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/game_fragment_game_title"
+                android:layout_width="500dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:text="UniteTop"
+                android:gravity="center"
+                android:textSize="120dp"
+                android:textColor="@color/game_fragment_frame1_title"/>
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/game_fragment_button_begin_geme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_fragment_game_title"
+                android:layout_centerHorizontal="true"
+                android:text="@string/robot_string_begin_game_text"
+                android:textColor="@color/game_fragment_frame1_start_game_button_text"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="20dp"
+                android:layout_marginTop="30dp"
+                app:qmui_backgroundColor="@color/game_fragment_frame1_start_game_button_background"
+                app:qmui_borderWidth="0dp"
+                android:textSize="25dp"
+                android:elevation="6dp"
+                />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+</FrameLayout>

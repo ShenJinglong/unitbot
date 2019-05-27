@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">Unitbot</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="robot_string_game_rule_title">Game Rules</string>
+    <string name="robot_string_game_rule_text">balabalabalabala, wulawulawulawula</string>
+    <string name="robot_string_computer_score_add_one_text">Robot score plus one</string>
+    <string name="robot_string_user_score_add_one_text">User score plus one</string>
+    <string name="robot_string_draw_text">Draw</string>
+    <string name="robot_string_begin_game_text">Start the game!!!</string>
+    <string name="robot_string_try_again_text">Play again</string>
+    <string name="robot_string_game_over_text">End game</string>
+    <string name="robot_string_serial_open_failed_text">Serial port failed to open</string>
+    <string name="robot_string_game_text">Game</string>
+    <string name="robot_string_maintain_text">Maintain</string>
+    <string name="robot_string_edit_text_hint_text">Chat robot</string>
+    <string name="robot_string_send_button_text">Send</string>
+    <string name="robot_string_user_win">User win!!!</string>
+    <string name="robot_string_robot_win">Robot win!!!</string>
+    <string name="robot_string_maintain_sent_successfully">Sent successfully</string>
+    <string name="robot_string_maintain_failed_to_send">Failed to send</string>
+    <string name="robot_string_maintain_edit_text_not_empty">The string sent cannot be empty</string>
+
+
+    <string name="maintain_fragment_color_sensor_title">Color Sensor</string>
+    <string name="maintain_fragment_red_value">Red: </string>
+    <string name="maintain_fragment_green_value">Green: </string>
+    <string name="maintain_fragment_blue_value">Blue: </string>
+    <string name="maintain_fragment_distance_sensor_title">Distance Sensor/Voice</string>
+    <string name="maintain_fragment_distance_value">Distance: </string>
+    <string name="maintain_fragment_speech_rate">Rate: </string>
+    <string name="maintain_fragment_tone">Tone: </string>
+    <string name="maintain_fragment_serial_baud">Serial port baud rate</string>
+    <string name="maintain_fragment_show_serial">Display serial data</string>
+    <string name="maintain_fragment_adjust_duoji">Adjusting the steering gear</string>
+    <string name="maintain_fragment_send">Send</string>
+
+    <string name="serial_driver_set_baud_successfully">The baud rate is set successfully and the current baud rate is: </string>
+    <string name="serial_driver_restart_serial_failed">Restart the serial port failed</string>
+
+    <string name="gpio_driver_export_left_pin_failed">Export left pin failed</string>
+    <string name="gpio_driver_export_mid_pin_failed">Export intermediate pin failed</string>
+    <string name="gpio_driver_export_right_pin_failed">Export right pin failed</string>
+    <string name="gpio_driver_set_left_pin_direction_failed">Setting the left pin IO direction failed</string>
+    <string name="gpio_driver_set_mid_pin_direction_failed">Setting intermediate pin IO direction failed</string>
+    <string name="gpio_driver_set_right_pin_direction_failed">Setting the right pin IO direction failed</string>
+
+    <string name="game_fragment_show_result_you_win">You Win!! :)</string>
+    <string name="game_fragment_show_result_draw">Draw -_-</string>
+    <string name="game_fragment_show_result_you_lose">You Lose :(</string>
+
+    <string name="check_card_dialog_title">Card</string>
+    <string name="check_card_dialog_message">Please insert a card</string>
+
+    <string name="check_distance_title">Distance</string>
+    <string name="check_distance_message">Please keep the distance of 10cm or more with the robot</string>
+
+    <string name="show_rule_dialog_title">Game Rule</string>
+    <string name="show_rule_dialog_message">Click the game rules button to show the rules of the game\nClick the start button to start the game</string>
+    <string name="show_rule_dialog_rule_button_rule">Game rules</string>
+    <string name="show_rule_dialog_rule_button_begin">Start directly</string>
+
+    <string name="rule_sentence1">Hello, I am XiaoWei from the UNITETOP company. You can play games or chat with me.</string>
+    <string name="rule_sentence2">Let me tell you how to play this game now.</string>
+    <string name="rule_sentence3">First, you need to pick a card and insert it into the card slot.</string>
+    <string name="rule_sentence4">What are the uses for these cards? I won\'t tell you first, you just need to know:</string>
+    <string name="rule_sentence5">Red card: 2 * n + 1</string>
+    <string name="rule_sentence6">Green card: n + 4</string>
+    <string name="rule_sentence7">Blue card: n ^ 2 / 3</string>
+    <string name="rule_sentence8">Hhh, don\'t be scared by these formulas.</string>
+    <string name="rule_sentence9">After entering the game, you and me will be randomly assigned three cards, which are randomly selected from 1 ~ 5.</string>
+    <string name="rule_sentence10">Then do you the card just inserted, remember what function it represents?</string>
+    <string name="rule_sentence11">Every card you play will go through this function calculation.</string>
+    <string name="rule_sentence12">For example, if you have a 1 and then you insert a red card, what is the actual value of your card?</string>
+    <string name="rule_sentence13">Hhh, it is 3, right?</string>
+    <string name="rule_sentence14">Then we both round out the cards, which is bigger than the cards, three wins in three games, who wins will have sugar to eat.</string>
+
+    <string name="back">Back</string>
+
+</resources>

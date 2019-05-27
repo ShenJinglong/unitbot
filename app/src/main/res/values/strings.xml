@@ -1,3 +1,83 @@
 <resources>
     <string name="app_name">Unitbot</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="robot_string_game_rule_title">游戏规则</string>
+    <string name="robot_string_game_rule_text">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉，乌拉乌拉乌拉乌拉乌拉乌拉乌拉乌拉</string>
+    <string name="robot_string_computer_score_add_one_text">机器人得分加一</string>
+    <string name="robot_string_user_score_add_one_text">用户得分加一</string>
+    <string name="robot_string_draw_text">平局</string>
+    <string name="robot_string_begin_game_text">开始游戏</string>
+    <string name="robot_string_try_again_text">再玩一次</string>
+    <string name="robot_string_game_over_text">结束游戏</string>
+    <string name="robot_string_serial_open_failed_text">串口打开失败</string>
+    <string name="robot_string_game_text">游戏</string>
+    <string name="robot_string_maintain_text">维护</string>
+    <string name="robot_string_edit_text_hint_text">聊天机器人</string>
+    <string name="robot_string_send_button_text">发送</string>
+    <string name="robot_string_user_win">用户赢</string>
+    <string name="robot_string_robot_win">机器人赢</string>
+    <string name="robot_string_maintain_sent_successfully">发送成功</string>
+    <string name="robot_string_maintain_failed_to_send">发送失败</string>
+    <string name="robot_string_maintain_edit_text_not_empty">发送的字符串不能为空</string>
+
+    <string name="maintain_fragment_color_sensor_title">颜色传感器</string>
+    <string name="maintain_fragment_red_value">红色分量： </string>
+    <string name="maintain_fragment_green_value">绿色分量： </string>
+    <string name="maintain_fragment_blue_value">蓝色分量： </string>
+    <string name="maintain_fragment_distance_sensor_title">距离传感器/语音</string>
+    <string name="maintain_fragment_distance_value">距离： </string>
+    <string name="maintain_fragment_speech_rate">语速： </string>
+    <string name="maintain_fragment_tone">语调： </string>
+    <string name="maintain_fragment_serial_baud">串口波特率</string>
+    <string name="maintain_fragment_show_serial">显示串口数据</string>
+    <string name="maintain_fragment_adjust_duoji">调试舵机</string>
+    <string name="maintain_fragment_send">发送</string>
+
+    <string name="serial_driver_set_baud_successfully">波特率设置成功，当前波特率为： </string>
+    <string name="serial_driver_restart_serial_failed">重启串口失败</string>
+
+    <string name="gpio_driver_export_left_pin_failed">导出左引脚失败</string>
+    <string name="gpio_driver_export_mid_pin_failed">导出中引脚失败</string>
+    <string name="gpio_driver_export_right_pin_failed">导出右引脚失败</string>
+    <string name="gpio_driver_set_left_pin_direction_failed">设置左引脚IO方向失败</string>
+    <string name="gpio_driver_set_mid_pin_direction_failed">设置中引脚IO方向失败</string>
+    <string name="gpio_driver_set_right_pin_direction_failed">设置右引脚IO方向失败</string>
+
+    <string name="game_fragment_show_result_you_win">你赢了！！ :)</string>
+    <string name="game_fragment_show_result_draw">平局 -_-</string>
+    <string name="game_fragment_show_result_you_lose">你输了 :(</string>
+
+    <string name="check_card_dialog_title">卡片</string>
+    <string name="check_card_dialog_message">请插入卡片</string>
+
+    <string name="check_distance_title">距离</string>
+    <string name="check_distance_message">请与机器人保持 10cm 以上的距离</string>
+
+    <string name="show_rule_dialog_title">游戏规则</string>
+    <string name="show_rule_dialog_message">点击游戏规则按钮展示游戏规则\n点击直接开始按钮开始游戏</string>
+    <string name="show_rule_dialog_rule_button_rule">游戏规则</string>
+    <string name="show_rule_dialog_rule_button_begin">直接开始</string>
+
+    <string name="rule_sentence1">你好啊，我是来自 UNITETOP 公司的小维，你可以和我玩游戏或者聊天</string>
+    <string name="rule_sentence2">现在让我来告诉你这个游戏怎么玩吧</string>
+    <string name="rule_sentence3">首先，你需要挑选一张卡片，插入插卡口中</string>
+    <string name="rule_sentence4">那这些卡片都有什么用呐？嘿嘿，我先不告诉你，你只需要知道：</string>
+    <string name="rule_sentence5">红色卡： 2 * n + 1</string>
+    <string name="rule_sentence6">绿色卡： n + 4</string>
+    <string name="rule_sentence7">蓝色卡： n ^ 2 / 3</string>
+    <string name="rule_sentence8">哈哈哈, 不要被这些公式吓到哦</string>
+    <string name="rule_sentence9">进入游戏后，你和小维都会随机分到三张牌，这三张牌是从 1 ～ 5 中随机挑选的</string>
+    <string name="rule_sentence10">然后就是你刚才插入的那张卡，还记得它代表什么函数吗？</string>
+    <string name="rule_sentence11">你出的每一张牌都会经过这个函数运算</string>
+    <string name="rule_sentence12">比如说你出一张1，然后你之前插入的是红卡，那么你出的卡实际数值就是多少吖？你猜</string>
+    <string name="rule_sentence13">哈哈哈，就是三吖，答对了吗？</string>
+    <string name="rule_sentence14">然后我俩轮流出牌，比谁的牌大，三局两胜，谁赢了谁就有糖吃哦～</string>
+
+
+    <string name="back">返回</string>
+
+
 </resources>

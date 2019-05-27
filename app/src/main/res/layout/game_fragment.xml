@@ -278,7 +278,7 @@
                 android:layout_height="300dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:text="UnitTop"
+                android:text="UniteTop"
                 android:gravity="center"
                 android:textSize="120dp"
                 android:textColor="@color/game_fragment_frame1_title"/>

@@ -173,30 +173,31 @@ public class GameFragment extends Fragment {
 
 
                     new QMUIDialog.MessageDialogBuilder(getActivity())
-                            .setTitle("游戏规则")
-                            .setMessage("点击游戏规则按钮展示游戏规则\n点击直接开始按钮开始游戏")
-                            .addAction("游戏规则", new QMUIDialogAction.ActionListener() {
+                            .setTitle(getResources().getString(R.string.show_rule_dialog_title))
+                            .setMessage(getResources().getString(R.string.show_rule_dialog_message))
+                            .addAction(getResources().getString(R.string.show_rule_dialog_rule_button_rule), new QMUIDialogAction.ActionListener() {
                                 @Override
                                 public void onClick(QMUIDialog qmuiDialog, int i) {
                                     qmuiDialog.dismiss();
 
-                                    sendMessageToChatFragment("hi~ 你好啊！我是来自 UNITETOP 公司的小维", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("现在让我来告诉你这个游戏怎么玩吧", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("首先，你需要挑选一张卡片，插入插卡口中", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("那这些卡片都有什么用呐？？嘿嘿，我先不告诉你，你只需要知道：", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("红色卡： 2 * n + 1", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("绿色卡： n + 4", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("蓝色卡： n ^ 2 / 3", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("hhh...不要被这些公式吓到哦！", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("进入游戏后，你和小维都会随机分到三张牌，这三张牌是从1～5中随机挑选的", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("然后就是...刚才你插入的那张卡，还记得它代表什么函数吗？", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("你出的每一张牌都会经过这个函数运算， 比如说你出一张 1, 然后你插入的是红卡， 那么你出的卡的实际数值就是...多少吖？？...你猜", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("hhh...就是 3 吖， 答对了吗？", TTS.TYPE_ADD);
-                                    sendMessageToChatFragment("然后我俩轮流出牌，比谁的牌大，三局两胜，谁赢了谁就有糖吃哦 ：）", TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence1), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence2), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence3), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence4), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence5), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence6), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence7), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence8), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence9), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence10), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence11), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence12), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence13), TTS.TYPE_ADD);
+                                    sendMessageToChatFragment(getResources().getString(R.string.rule_sentence14), TTS.TYPE_ADD);
 
                                 }
                             })
-                            .addAction("直接开始", new QMUIDialogAction.ActionListener() {
+                            .addAction(getResources().getString(R.string.show_rule_dialog_rule_button_begin), new QMUIDialogAction.ActionListener() {
                                 @Override
                                 public void onClick(QMUIDialog dialog, int index) {
 
@@ -260,6 +261,7 @@ public class GameFragment extends Fragment {
 
                                 }
                             }).show();
+                    TTS.speakFLUSH(getResources().getString(R.string.show_rule_dialog_message));
 
 
                 }

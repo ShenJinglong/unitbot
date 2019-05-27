@@ -57,6 +57,26 @@
     <string name="check_distance_title">Distance</string>
     <string name="check_distance_message">Please keep the distance of 10cm or more with the robot</string>
 
+    <string name="show_rule_dialog_title">Game Rule</string>
+    <string name="show_rule_dialog_message">Click the game rules button to show the rules of the game\nClick the start button to start the game</string>
+    <string name="show_rule_dialog_rule_button_rule">Game rules</string>
+    <string name="show_rule_dialog_rule_button_begin">Start directly</string>
+
+    <string name="rule_sentence1">Hello, I am XiaoWei from the UNITETOP company. You can play games or chat with me.</string>
+    <string name="rule_sentence2">Let me tell you how to play this game now.</string>
+    <string name="rule_sentence3">First, you need to pick a card and insert it into the card slot.</string>
+    <string name="rule_sentence4">What are the uses for these cards? I won\'t tell you first, you just need to know:</string>
+    <string name="rule_sentence5">Red card: 2 * n + 1</string>
+    <string name="rule_sentence6">Green card: n + 4</string>
+    <string name="rule_sentence7">Blue card: n ^ 2 / 3</string>
+    <string name="rule_sentence8">Hhh, don\'t be scared by these formulas.</string>
+    <string name="rule_sentence9">After entering the game, you and me will be randomly assigned three cards, which are randomly selected from 1 ~ 5.</string>
+    <string name="rule_sentence10">Then do you the card just inserted, remember what function it represents?</string>
+    <string name="rule_sentence11">Every card you play will go through this function calculation.</string>
+    <string name="rule_sentence12">For example, if you have a 1 and then you insert a red card, what is the actual value of your card?</string>
+    <string name="rule_sentence13">Hhh, it is 3, right?</string>
+    <string name="rule_sentence14">Then we both round out the cards, which is bigger than the cards, three wins in three games, who wins will have sugar to eat.</string>
+
     <string name="back">Back</string>
 
 </resources>
